@@ -1,0 +1,5 @@
+<div>
+    <input type="text" [(ngModel)]="mnemonic" placeholder="Enter your mnemonic phrase">
+    <button (click)="connect()">Connect</button>
+  </div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>

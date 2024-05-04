@@ -1,0 +1,17 @@
+<h1>Ajouter un contact</h1>
+<div>
+  <input type="text" [(ngModel)]="newContactName" placeholder="Contact Name">
+  <input type="text" [(ngModel)]="newContactAddress" placeholder="Contact Address">
+  <button (click)="addContact()">Add Contact</button>
+</div>
+
+<h2>Liste Contacts</h2>
+<ul>
+  <li *ngFor="let contact of contacts">
+    {{ contact.name }} <br> ({{ contact.address }})
+    <button>Modifier</button>
+    <button (click)="deleteContact(contact.id)">Delete</button>
+    <button>Message</button>
+  </li>
+</ul>
+<app-navigation-menu></app-navigation-menu>
