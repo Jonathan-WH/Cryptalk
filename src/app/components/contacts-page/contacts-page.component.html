@@ -11,7 +11,10 @@
     {{ contact.name }} <br> ({{ contact.address }})
     <button>Modifier</button>
     <button (click)="deleteContact(contact.id)">Delete</button>
-    <button>Message</button>
+    <button (click)="startChat(contact.address)">Message</button>
   </li>
 </ul>
+
+<button (click)="testAlert()">Test Alert</button>
+
 <app-navigation-menu></app-navigation-menu>

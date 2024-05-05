@@ -1,3 +1,16 @@
-<h1>TALKING PAGE</h1>
+<h1>Talking Page</h1>
+<h2>Conversation avec : {{ contactName }}</h2>
+<div class="message-area">
+    <ul>
+        <li *ngFor="let message of messages" [class]="message.isSender ? 'right' : 'left'">
+            <p>{{ message.content }}</p>
+        </li>
+    </ul>
+</div>
+
+<div class="message-input">
+    <textarea [(ngModel)]="newMessage" placeholder="Écrire un message..."></textarea>
+    <button (click)="sendMessage()">Envoyer</button>
+</div>
 
 <app-navigation-menu></app-navigation-menu>

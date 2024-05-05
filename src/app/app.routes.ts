@@ -26,7 +26,7 @@ export const routes: Routes = [
 
     {path:'wallet-page', component: WalletPageComponent,canActivate: [AuthGuard]},
 
-    {path:'talkings-page', component: TalkingPageComponent,canActivate: [AuthGuard]},
+    {path:'talking-page', component: TalkingPageComponent,canActivate: [AuthGuard]},
 
     { path: '**', redirectTo: '/home-no-connected'},
     // Ajoutez d'autres routes ici

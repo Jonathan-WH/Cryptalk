@@ -4,13 +4,17 @@ import { NavigationMenuComponent } from "../navigation-menu/navigation-menu.comp
 import { WalletManagementService } from '../../services/wallet-management.service';
 import { ContactService, ContactInterface } from '../../services/contact.service';
 import { FormsModule } from '@angular/forms'; 
+import { IonicModule } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 
 
 @Component({
     selector: 'app-contacts-page',
     templateUrl: './contacts-page.component.html',
     styleUrls: ['./contacts-page.component.scss'],
-    imports: [NavigationMenuComponent, FormsModule, CommonModule],
+    imports: [NavigationMenuComponent, FormsModule, CommonModule, IonicModule],
     standalone: true,
 })
 export class ContactsPageComponent implements OnInit {
@@ -21,8 +25,14 @@ export class ContactsPageComponent implements OnInit {
 
   constructor(
     private walletService: WalletManagementService,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private alertController: AlertController,
+    private router: Router,
   ) { }
+
+  startChat(contactAdress: string): void {
+    this.router.navigate(['/talking-page', {address: contactAdress}]);
+  }
 
   async ngOnInit() {
     // Tentative de connexion au wallet
@@ -51,17 +61,44 @@ export class ContactsPageComponent implements OnInit {
     }
   }
 
-  deleteContact(contactId: string): void {
-    if(confirm('Are you sure you want to delete this contact?')){
-      this.contactService.deleteContact(contactId);
-    this.loadContacts();  // Rechargement de la liste des contacts après suppression
-    }
-    
+  async deleteContact(contactId: string): Promise<void> {
+    console.log('Tentative de suppression du contact avec ID:', contactId); // Vérifiez si cet ID est correct
+    const alert = await this.alertController.create({
+      header: 'Confirmer la suppression',
+      message: 'Voulez-vous vraiment supprimer ce contact ?',
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'cancel',
+          handler: () =>{
+            console.log('Suppression annulée');
+          }
+        }, {
+          text: 'Supprimer',
+          handler: () => {
+           this.contactService.deleteContact(contactId);
+           console.log('Contact supprimé');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   loadContacts(): void {
     this.contacts = this.contactService.getContacts();
     console.log('Loaded contacts:', this.contacts);
   }
+
+  async testAlert(): Promise<void> {
+    console.log('Test alert');
+    const alert = await this.alertController.create({
+        header: 'Test Alert',
+        message: 'This is a test alert to check functionality.',
+        buttons: ['OK']
+    });
+    await alert.present();
+}
+
   
 }
