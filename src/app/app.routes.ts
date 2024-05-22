@@ -8,6 +8,7 @@ import { SettingsPageComponent } from './components/settings-page/settings-page.
 import { TalksPageComponent } from './components/talks-page/talks-page.component';
 import { WalletPageComponent } from './components/wallet-page/wallet-page.component';
 import { TalkingPageComponent } from './components/talking-page/talking-page.component';
+import { ContactAddComponent } from './components/contact-add/contact-add.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home-no-connected', pathMatch: 'full' },
@@ -18,15 +19,17 @@ export const routes: Routes = [
 
     {path: 'connect-with-existing-account', component: ConnectWithExistingAccountComponent},
 
-    {path: 'contacts-page', component: ContactsPageComponent,canActivate: [AuthGuard]},
+    {path: 'contacts-page', component: ContactsPageComponent, canActivate: [AuthGuard]},
 
-    {path: 'settings-page', component: SettingsPageComponent,canActivate: [AuthGuard]},
+    {path: 'settings-page', component: SettingsPageComponent, canActivate: [AuthGuard]},
 
-    {path: 'talks-page', component: TalksPageComponent,canActivate: [AuthGuard]},
+    {path: 'talks-page', component: TalksPageComponent, canActivate: [AuthGuard]},
 
-    {path:'wallet-page', component: WalletPageComponent,canActivate: [AuthGuard]},
+    {path:'wallet-page', component: WalletPageComponent, canActivate: [AuthGuard]},
 
-    {path:'talking-page', component: TalkingPageComponent,canActivate: [AuthGuard]},
+    {path:'talking-page', component: TalkingPageComponent, canActivate: [AuthGuard]},
+
+    {path: 'add-contact', component: ContactAddComponent  , canActivate: [AuthGuard]},
 
     { path: '**', redirectTo: '/home-no-connected'},
     // Ajoutez d'autres routes ici

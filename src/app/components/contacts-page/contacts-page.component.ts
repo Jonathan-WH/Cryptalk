@@ -47,21 +47,14 @@ export class ContactsPageComponent implements OnInit {
     this.loadContacts();
   }
 
-  addContact(): void {
-    if (this.newContactName && this.newContactAddress) {
-      const newContact: ContactInterface = {
-        id: Date.now().toString(),  // Génération d'un identifiant unique pour le contact
-        name: this.newContactName,
-        address: this.newContactAddress
-      };
-      this.contactService.addContact(newContact);
-      this.newContactName = '';
-      this.newContactAddress = '';
-      this.loadContacts();  // Rechargement de la liste des contacts après ajout
-    }
+  navigateToAddContact(): void {
+    this.router.navigate(['/add-contact']);
   }
 
+  
+
   async deleteContact(contactId: string): Promise<void> {
+    console.log('test');
     console.log('Tentative de suppression du contact avec ID:', contactId); // Vérifiez si cet ID est correct
     const alert = await this.alertController.create({
       header: 'Confirmer la suppression',
@@ -83,22 +76,16 @@ export class ContactsPageComponent implements OnInit {
       ]
     });
     await alert.present();
+
   }
 
   loadContacts(): void {
+    
     this.contacts = this.contactService.getContacts();
     console.log('Loaded contacts:', this.contacts);
   }
 
-  async testAlert(): Promise<void> {
-    console.log('Test alert');
-    const alert = await this.alertController.create({
-        header: 'Test Alert',
-        message: 'This is a test alert to check functionality.',
-        buttons: ['OK']
-    });
-    await alert.present();
-}
+
 
   
 }

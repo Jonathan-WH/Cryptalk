@@ -1,16 +1,28 @@
-<h1>Talking Page</h1>
-<h2>Conversation avec : {{ contactName }}</h2>
-<div class="message-area">
-    <ul>
-        <li *ngFor="let message of messages" [class]="message.isSender ? 'right' : 'left'">
-            <p>{{ message.content }}</p>
-        </li>
-    </ul>
-</div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/contacts-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ (contactName | titlecase) || "Unknown" }}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<div class="message-input">
+<ion-content>
+  <div class="message-area" #messageArea>
+    <ul>
+      <div *ngFor="let message of messages; let i = index">
+        <p class="time-message" *ngIf="showTimestamp(i)">----- {{ (message.timestamp | timestamp) }} -----</p>
+        <li [class]="message.isSender ? 'right' : 'left'" #lastMessage>
+          <p class="message">{{ message.content }}</p>
+        </li>
+      </div>
+    </ul>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="message-input">
     <textarea [(ngModel)]="newMessage" placeholder="Écrire un message..."></textarea>
     <button (click)="sendMessage()">Envoyer</button>
-</div>
-
-<app-navigation-menu></app-navigation-menu>
+  </div>
+</ion-footer>

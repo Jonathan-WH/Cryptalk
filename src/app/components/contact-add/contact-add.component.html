@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/contacts-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add new contact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contact-area">
+    <h1>Add a new contact</h1>
+    <div>
+
+      <label for="contactName">Contact Name</label>
+      <br>
+      <input type="text" [(ngModel)]="newContactName" placeholder="Contact Name">
+<br>
+      <label for="ContactAdress"> Contact Adress Wallet</label>
+      <br>
+      <input type="text" [(ngModel)]="newContactAddress" placeholder="Contact Address">
+<br>
+      <label for="contactBtcWallet">Bitcoin Wallet Adress</label>
+      <br>
+      <input type="text" [(ngModel)]="newContactBtcWallet" placeholder="Bitcoin Wallet Address">
+<br>
+      <label for="contactBtcWallet">Ethereum Wallet Adress</label>
+      <br>
+      <input type="text" [(ngModel)]="newContactEthWallet" placeholder="Ethereum Wallet Address">
+<br>
+      <label for="contactBtcWallet">USDT Wallet Adress</label>
+      <br>
+      <input type="text" [(ngModel)]="newContactUsdtWallet" placeholder="USDT Wallet Address">
+<br>
+      <label for="contactBtcWallet">BNB Wallet Adress</label>
+      <br>
+      <input type="text" [(ngModel)]="newContactBnbWallet" placeholder="BNB Wallet Address">
+<br>
+      <label for="contactBtcWallet">Solana Wallet Adress</label>
+      <br>
+      <input type="text" [(ngModel)]="newContactSolWallet" placeholder="Solana Wallet Address">
+     <br>
+      <label for="contactNote">Note</label>
+      <br>
+      <input type="text" [(ngModel)]="newContactNote" placeholder="Note">
+      <br>
+
+      <ion-button (click)="addContact()">Add Contact</ion-button>
+    </div>
+  </div>
+</ion-content>

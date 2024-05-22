@@ -1,13 +1,122 @@
-.right {
-    text-align: right;
-  }
-  
-  .left {
-    text-align: left;
-  }
-  
-  .message-area {
+
+.message-area {
+  div {
     display: flex;
     flex-direction: column;
   }
+  p.time-message {
+    font-size: 12px;
+    text-align: center;
+    margin: 4px;
+  }
+  padding: 1rem;
+  overflow-y: auto;
+  height: 89%;
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  li {
+    position: relative; // Ajoutez ceci pour les pseudo-éléments
+    max-width: 70%;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: var(--matrix-text-color);
+    border: #00FF00 2px solid;
   
+    &.left {
+      background-color: var(--matrix-message-receiver-background-color);
+      align-self: flex-start;
+      
+    }
+    &.right {
+      background-color: var(--matrix-message-sender-background-color);
+      align-self: flex-end;
+      text-align: right;
+     
+    }
+
+    // Coin gauche
+    &.left::before {
+      content: '';
+      position: absolute;
+      bottom: -11px;
+      left: -6px;
+      rotate: 292deg;
+      width: 0;
+      height: 0;
+      border-top: 10px solid var(--matrix-message-receiver-background-color);
+      border-right: 10px solid transparent;
+      border-left: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-top-color: #00FF00; // Couleur de la bordure du coin
+    }
+
+    // Coin droit
+    &.right::after {
+      content: '';
+      position: absolute;
+      bottom: -11px;
+      right: -6px;
+      rotate: 68deg;
+      width: 0;
+      height: 0;
+      border-top: 10px solid var(--matrix-message-sender-background-color);
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-top-color: #00FF00; // Couleur de la bordure du coin
+    }
+  }
+
+  p.message {
+    font-size: 16px;
+    margin: 3px;
+  }
+  
+}
+
+.message-input {
+  display: flex;
+  padding: 1rem 2rem;
+  background-color: var(--matrix-input-background-color);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  border-top: #00FF00 1px solid;
+  textarea {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--matrix-input-background-color);
+    color: var(--matrix-input-text-color);
+    margin-right: 1rem;
+    
+    
+  }
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--matrix-button-background-color);
+    color: var(--matrix-button-text-color);
+    cursor: pointer;
+    height: fit-content;
+  }
+
+  
+}
+
+p.time-message {
+font-size: 4px;
+}
+
+p.message {
+font-size: 16px;
+}

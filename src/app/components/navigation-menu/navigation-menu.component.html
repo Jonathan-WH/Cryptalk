@@ -1,4 +1,4 @@
-<nav class="navigation-menu">
+<!-- <nav class="navigation-menu">
     <ul class="menu">
       <li class="menu-item">
         <a routerLink="/home-connected">
@@ -31,5 +31,28 @@
           </a>
       </li>
     </ul>
-  </nav>
-  
+  </nav> -->
+
+
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button routerLink="/home-connected">
+        <ion-icon src="../../../assets/SVG/home.svg"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+      <ion-tab-button routerLink="/contacts-page">
+        <ion-icon src="../../../assets/SVG/contact.svg"></ion-icon>
+        <ion-label>Contact</ion-label>
+      </ion-tab-button>
+      <ion-tab-button routerLink="/talks-page">
+        <ion-icon src="../../../assets/SVG/chat.svg"></ion-icon>
+        <ion-label>Chats</ion-label>
+      </ion-tab-button>
+      <ion-tab-button routerLink="/wallet-page">
+        <ion-icon src="../../../assets/SVG/wallet.svg"></ion-icon>
+        <ion-label>Wallet</ion-label>
+      </ion-tab-button>
+      <ion-tab-button routerLink="/settings-page">
+        <ion-icon src="../../../assets/SVG/settings2.svg"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>

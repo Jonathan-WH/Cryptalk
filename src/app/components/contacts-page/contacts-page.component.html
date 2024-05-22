@@ -1,20 +1,31 @@
-<h1>Ajouter un contact</h1>
-<div>
-  <input type="text" [(ngModel)]="newContactName" placeholder="Contact Name">
-  <input type="text" [(ngModel)]="newContactAddress" placeholder="Contact Address">
-  <button (click)="addContact()">Add Contact</button>
-</div>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contact</ion-title>
+    <ion-button size="small" fill="clear" slot="end" (click)="navigateToAddContact()"><ion-icon src="../../../assets/SVG/addcontact.svg" ></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
 
-<h2>Liste Contacts</h2>
+<ion-content>
+
+
+
 <ul>
   <li *ngFor="let contact of contacts">
     {{ contact.name }} <br> ({{ contact.address }})
-    <button>Modifier</button>
-    <button (click)="deleteContact(contact.id)">Delete</button>
-    <button (click)="startChat(contact.address)">Message</button>
+    <ion-button>Modifier</ion-button>
+    <ion-button (click)="deleteContact(contact.id)">Delete</ion-button>
+    <ion-button (click)="startChat(contact.address)">Message</ion-button>
   </li>
 </ul>
 
-<button (click)="testAlert()">Test Alert</button>
 
-<app-navigation-menu></app-navigation-menu>
+
+
+</ion-content>
+
+
+
+
+
+
+  

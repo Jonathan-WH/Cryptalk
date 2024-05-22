@@ -1,2 +1,18 @@
-<h1>TALKS PAGE</h1>
-<app-navigation-menu></app-navigation-menu>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Talks</ion-title>
+  </ion-toolbar>
+</ion-header>
+<div *ngIf="conversations.length > 0">
+  <ul>
+    <li *ngFor="let conversation of conversations " (click)="startChat(conversation.adress)" >
+      {{ conversation.peerName }} - Last message: {{ conversation.lastMessage }}
+    </li>
+
+    
+  </ul>
+</div>
+<div *ngIf="conversations.length === 0">
+  <p>No conversations found.</p>
+</div>
+

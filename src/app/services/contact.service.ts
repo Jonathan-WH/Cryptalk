@@ -4,30 +4,46 @@ export interface ContactInterface {
   id: string;
   name: string;
   address: string;
+  btcadress: string;
+  ethadress: string;
+  usdtadress: string;
+  bnbadress: string;
+  soladress: string;
+  note: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
-  private contactsKey = 'contacts';
+  private contacts: ContactInterface[] = [];
 
-  constructor() { }
-
-  addContact(contact: ContactInterface): void {
-    const contacts = this.getContacts();
-    contacts.push(contact);
-    localStorage.setItem(this.contactsKey, JSON.stringify(contacts));
+  constructor() {
+    this.loadContactsFromLocalStorage();
   }
 
-  getContacts(): ContactInterface[] {
-    const contactsJSON = localStorage.getItem(this.contactsKey);
-    return contactsJSON ? JSON.parse(contactsJSON) : [];
+  addContact(contact: ContactInterface): void {
+    this.contacts.push(contact);
+    this.saveContactsToLocalStorage();
   }
 
   deleteContact(contactId: string): void {
-    let contacts = this.getContacts();
-    contacts = contacts.filter (contact => contact.id !== contactId);
-    localStorage.setItem(this.contactsKey, JSON.stringify(contacts));
+    this.contacts = this.contacts.filter(contact => contact.id !== contactId);
+    this.saveContactsToLocalStorage();
+  }
+
+  getContacts(): ContactInterface[] {
+    return this.contacts;
+  }
+
+  private loadContactsFromLocalStorage(): void {
+    const storedContacts = localStorage.getItem('contacts');
+    if (storedContacts) {
+      this.contacts = JSON.parse(storedContacts);
+    }
+  }
+
+  private saveContactsToLocalStorage(): void {
+    localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
 }

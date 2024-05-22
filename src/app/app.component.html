@@ -1,2 +1,11 @@
-<router-outlet>
-</router-outlet>
+<ion-app>
+    <ion-router-outlet></ion-router-outlet>
+   <ion-tabs>
+    <app-navigation-menu [class.hidden]="!showNavigationMenu" ></app-navigation-menu>
+   </ion-tabs> 
+    <!--
+         <app-splash-screen></app-splash-screen>
+    -->
+
+  </ion-app>
+  

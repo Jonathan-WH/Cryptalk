@@ -45,5 +45,9 @@ export class WalletManagementService {
       return null;
     }
   }
+
+  getCurrentWalletAddress(): string | null {
+    return localStorage.getItem('walletAddress');
+  }
 }
 

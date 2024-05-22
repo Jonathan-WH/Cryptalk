@@ -1,0 +1,33 @@
+/**
+ * Ionic Dark Theme
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+
+:root {
+    /* Couleurs principales du thème Matrix */
+    --matrix-background-color: #000000;
+    /* Noir */
+    --matrix-text-color: #00FF00;
+    /* Vert néon */
+    --matrix-input-background-color: #1a1a1a;
+    /* Gris foncé */
+    --matrix-input-text-color: #00FF00;
+    /* Vert néon */
+    --matrix-button-background-color: #00FF00;
+    /* Vert néon */
+    --matrix-button-text-color: #000000;
+    /* Noir */
+
+    /* Couleurs des messages */
+    --matrix-message-sender-background-color: #0d0d0d;
+    /* Gris très foncé */
+    --matrix-message-receiver-background-color: #313131;
+    /* Gris foncé */
+}

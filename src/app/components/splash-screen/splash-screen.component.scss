@@ -1,0 +1,70 @@
+.splash-screen {
+    position: fixed;  // Utilisez fixed pour rester visible même lors du défilement
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; // 100vh pour couvrir toute la hauteur de la vue
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; // Un z-index élevé pour être sûr qu'il s'affiche au-dessus de tout
+    overflow: hidden;
+  }
+  
+  
+  .matrix-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+  }
+  
+  .logo {
+    z-index: 1;
+    opacity: 0;
+    animation: fadeIn 4s forwards;
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+  }
+
+  .title {
+    z-index: 1;
+    opacity: 0;
+    animation: fadeIn 4s forwards;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    font-size: 50px;
+    text-align: center;
+  }
+  
+  .logo-title {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+  }
+
+  .first-title {
+    font-size: 25vw;
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+
+  }
+
+  .hidden {
+    display: none;
+  }
+  
