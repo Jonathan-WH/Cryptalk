@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WalletManagementService } from '../../services/wallet-management.service';
 import { ContactService, ContactInterface } from '../../services/contact.service';
-import { FormsModule } from '@angular/forms'; 
-import { IonicModule } from '@ionic/angular';
-import { AlertController } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+import { IonicModule, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-contacts-page',
+  selector: 'app-contact-add',
   templateUrl: './contact-add.component.html',
   styleUrls: ['./contact-add.component.scss'],
-  imports: [ FormsModule, CommonModule, IonicModule],
+  imports: [FormsModule, CommonModule, IonicModule],
   standalone: true,
 })
 export class ContactAddComponent implements OnInit {
@@ -29,7 +28,7 @@ export class ContactAddComponent implements OnInit {
     private walletService: WalletManagementService,
     private contactService: ContactService,
     private alertController: AlertController,
-    private router: Router,
+    private router: Router
   ) { }
 
   startChat(contactAddress: string): void {
@@ -45,63 +44,44 @@ export class ContactAddComponent implements OnInit {
       console.error('Failed to connect to wallet');
     }
 
-    // Chargement des contacts existants
-    this.loadContacts();
   }
 
-  addContact(): void {
-    if (this.newContactName && this.newContactAddress) {
-      const newContact: ContactInterface = {
-        id: Date.now().toString(),  // Génération d'un identifiant unique pour le contact
-        name: this.newContactName,
-        address: this.newContactAddress,
-        btcadress: this.newContactBtcWallet,
-        ethadress: this.newContactEthWallet,
-        usdtadress: this.newContactUsdtWallet,
-        bnbadress: this.newContactBnbWallet,
-        soladress: this.newContactSolWallet,
-        note: this.newContactNote
-      };
-      this.contactService.addContact(newContact);
-      this.newContactName = '';
-      this.newContactAddress = '';
-      this.newContactBtcWallet = '';
-      this.newContactEthWallet = '';
-      this.newContactUsdtWallet = '';
-      this.newContactBnbWallet = '';
-      this.newContactSolWallet = '';
-      this.newContactNote = '';
-      this.loadContacts();  // Rechargement de la liste des contacts après ajout
-    }
+  async addContact(): Promise<void> {
+    console.log('test');
+    // if (!this.newContactName || !this.newContactAddress) {
+    //   console.log('Missing required fields');
+    //   const alert = await this.alertController.create({
+    //     header: 'Champs obligatoires',
+    //     message: 'Le nom et l\'adresse du contact sont obligatoires.',
+    //     buttons: ['OK']
+    //   });
+    //   await alert.present();
+    //   return;
+    // }
+
+    // const newContact: ContactInterface = {
+    //   id: Date.now().toString(), // Génération d'un identifiant unique pour le contact
+    //   name: this.newContactName,
+    //   address: this.newContactAddress,
+    //   btcadress: this.newContactBtcWallet,
+    //   ethadress: this.newContactEthWallet,
+    //   usdtadress: this.newContactUsdtWallet,
+    //   bnbadress: this.newContactBnbWallet,
+    //   soladress: this.newContactSolWallet,
+    //   note: this.newContactNote
+    // };
+    // this.contactService.addContact(newContact);
+    // this.newContactName = '';
+    // this.newContactAddress = '';
+    // this.newContactBtcWallet = '';
+    // this.newContactEthWallet = '';
+    // this.newContactUsdtWallet = '';
+    // this.newContactBnbWallet = '';
+    // this.newContactSolWallet = '';
+    // this.newContactNote = '';
+
+    // // Redirection vers la page des contacts lorsque le contact est ajouté
+    // this.router.navigate(['/contacts-page']);
   }
 
-  async deleteContact(contactId: string): Promise<void> {
-    console.log('Tentative de suppression du contact avec ID:', contactId); // Vérifiez si cet ID est correct
-    const alert = await this.alertController.create({
-      header: 'Confirmer la suppression',
-      message: 'Voulez-vous vraiment supprimer ce contact ?',
-      buttons: [
-        {
-          text: 'Annuler',
-          role: 'cancel',
-          handler: () => {
-            console.log('Suppression annulée');
-          }
-        }, {
-          text: 'Supprimer',
-          handler: () => {
-            this.contactService.deleteContact(contactId);
-            this.loadContacts();  // Rechargement de la liste des contacts après suppression
-            console.log('Contact supprimé');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  loadContacts(): void {
-    this.contacts = this.contactService.getContacts();
-    console.log('Loaded contacts:', this.contacts);
-  }
 }

@@ -12,13 +12,14 @@ import { DecodedMessage } from '@xmtp/xmtp-js';
 import { ToastService } from '../../services/toast.service';
 import { Subscription } from 'rxjs';
 import { TimestampPipe } from '../../pipe/timestamp.pipe';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
   selector: 'app-talking-page',
   templateUrl: './talking-page.component.html',
   styleUrls: ['./talking-page.component.scss'],
-  imports: [NavigationMenuComponent, FormsModule, CommonModule, IonicModule, TimestampPipe  ],
+  imports: [NavigationMenuComponent, FormsModule, CommonModule, IonicModule, TimestampPipe],
   standalone: true
 })
 export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked {
@@ -40,13 +41,17 @@ export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked
     private router: Router,
     private scrollService: ScrollService,
     private toastService: ToastService,
-    private cdref: ChangeDetectorRef
+    private cdref: ChangeDetectorRef,
+    private navCtrl: NavController
   ) {
+
+
+
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            if(this.messageArea){
+            if (this.messageArea) {
               this.scrollService.scrollToBottom(this.messageArea);
             }
           }
@@ -59,7 +64,7 @@ export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked
     this.routerEventsSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd && this.router.url.includes('talking-page')) {
         setTimeout(() => {
-          if(this.messageArea){
+          if (this.messageArea) {
             this.scrollService.scrollToBottom(this.messageArea);
           }
         }, 1);
@@ -88,7 +93,7 @@ export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked
 
     // Utiliser setTimeout pour différer le défilement après le chargement initial des messages
     setTimeout(() => {
-      if(this.messageArea){
+      if (this.messageArea) {
         this.scrollService.scrollToBottom(this.messageArea);
       }
     }, 1);
@@ -131,10 +136,10 @@ export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked
     const loadedMessages = await this.chatService.loadMessages(this.contactAddress);
     this.messages = loadedMessages;
     setTimeout(() => {
-      if(this.messageArea){
+      if (this.messageArea) {
         this.scrollService.scrollToBottom(this.messageArea);
       }
-      
+
     }, 1);
   }
 
@@ -151,7 +156,7 @@ export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked
 
       // Utiliser setTimeout pour différer le défilement après l'ajout du message optimiste
       setTimeout(() => {
-        if(this.messageArea){
+        if (this.messageArea) {
           this.scrollService.scrollToBottom(this.messageArea);
         }
       }, 1);
@@ -201,5 +206,9 @@ export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked
     const previousMessage = this.messages[index - 1];
     const timeDifference = currentMessage.timestamp.getTime() - previousMessage.timestamp.getTime();
     return timeDifference > 5 * 60 * 1000;
+  }
+
+  goBack() {
+    this.navCtrl.back();
   }
 }

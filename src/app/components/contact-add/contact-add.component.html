@@ -11,40 +11,38 @@
   <div class="contact-area">
     <h1>Add a new contact</h1>
     <div>
-
       <label for="contactName">Contact Name</label>
       <br>
-      <input type="text" [(ngModel)]="newContactName" placeholder="Contact Name">
-<br>
-      <label for="ContactAdress"> Contact Adress Wallet</label>
+      <input type="text" id="contactName" name="contactName" [(ngModel)]="newContactName" placeholder="Contact Name">
       <br>
-      <input type="text" [(ngModel)]="newContactAddress" placeholder="Contact Address">
-<br>
-      <label for="contactBtcWallet">Bitcoin Wallet Adress</label>
+      <label for="contactAddress">Contact Address Wallet</label>
       <br>
-      <input type="text" [(ngModel)]="newContactBtcWallet" placeholder="Bitcoin Wallet Address">
-<br>
-      <label for="contactBtcWallet">Ethereum Wallet Adress</label>
+      <input type="text" id="contactAddress" [(ngModel)]="newContactAddress" placeholder="Contact Address">
       <br>
-      <input type="text" [(ngModel)]="newContactEthWallet" placeholder="Ethereum Wallet Address">
-<br>
-      <label for="contactBtcWallet">USDT Wallet Adress</label>
+      <label for="contactBtcWallet">Bitcoin Wallet Address</label>
       <br>
-      <input type="text" [(ngModel)]="newContactUsdtWallet" placeholder="USDT Wallet Address">
-<br>
-      <label for="contactBtcWallet">BNB Wallet Adress</label>
+      <input type="text" id="contactBtcWallet" [(ngModel)]="newContactBtcWallet" placeholder="Bitcoin Wallet Address">
       <br>
-      <input type="text" [(ngModel)]="newContactBnbWallet" placeholder="BNB Wallet Address">
-<br>
-      <label for="contactBtcWallet">Solana Wallet Adress</label>
+      <label for="contactEthWallet">Ethereum Wallet Address</label>
       <br>
-      <input type="text" [(ngModel)]="newContactSolWallet" placeholder="Solana Wallet Address">
-     <br>
+      <input type="text" id="contactEthWallet" [(ngModel)]="newContactEthWallet" placeholder="Ethereum Wallet Address">
+      <br>
+      <label for="contactUsdtWallet">USDT Wallet Address</label>
+      <br>
+      <input type="text" id="contactUsdtWallet" [(ngModel)]="newContactUsdtWallet" placeholder="USDT Wallet Address">
+      <br>
+      <label for="contactBnbWallet">BNB Wallet Address</label>
+      <br>
+      <input type="text" id="contactBnbWallet" [(ngModel)]="newContactBnbWallet" placeholder="BNB Wallet Address">
+      <br>
+      <label for="contactSolWallet">Solana Wallet Address</label>
+      <br>
+      <input type="text" id="contactSolWallet" [(ngModel)]="newContactSolWallet" placeholder="Solana Wallet Address">
+      <br>
       <label for="contactNote">Note</label>
       <br>
-      <input type="text" [(ngModel)]="newContactNote" placeholder="Note">
+      <input type="text" id="contactNote" [(ngModel)]="newContactNote" placeholder="Note">
       <br>
-
       <ion-button (click)="addContact()">Add Contact</ion-button>
     </div>
   </div>
