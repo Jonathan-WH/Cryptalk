@@ -2,18 +2,15 @@ import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { HttpClientModule } from '@angular/common/http';
+
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { CommonModule } from '@angular/common';
 
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, IonicModule, HttpClientModule, NavigationMenuComponent, SplashScreenComponent, CommonModule],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
-})
+@Component({ selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'], imports: [RouterOutlet, IonicModule, NavigationMenuComponent, SplashScreenComponent, CommonModule],  })
 export class AppComponent {
   title = 'CrypTalk';
   showNavigationMenu: boolean = true;
