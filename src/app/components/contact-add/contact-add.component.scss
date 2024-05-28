@@ -1,0 +1,88 @@
+.contact-area {
+    padding: 16px;
+}
+
+ion-item {
+    --inner-padding-top: 8px;
+    --inner-padding-bottom: 8px;
+    border-bottom: 1px solid #00ff007f;
+}
+
+ion-button {
+    margin-top: 16px;
+}
+
+ion-back-button {
+    color: #00ff00;
+  }
+
+
+.greenborderheader {
+    border-bottom: 2px solid #00ff00;
+}
+
+
+.contact-area {
+    padding: 16px;
+  }
+  
+  ion-item {
+    --inner-padding-top: 8px;
+    --inner-padding-bottom: 8px;
+    border-bottom: 1px solid #00ff007f;
+  }
+  
+  ion-button {
+    margin-top: 16px;
+  }
+  
+  .greenborderheader {
+    border-bottom: 2px solid #00ff00;
+  }
+  
+  .contact-area {
+    padding: 16px;
+  }
+  
+  ion-item {
+    --inner-padding-top: 8px;
+    --inner-padding-bottom: 8px;
+    border-bottom: 1px solid #00ff007f;
+  }
+  
+  ion-button {
+    margin-top: 16px;
+  }
+  
+  .greenborderheader {
+    border-bottom: 2px solid #00ff00;
+  }
+  
+  ion-button.add-contact {
+    --background: #000000; /* Couleur de fond par défaut */
+    --background-hover: #000000; /* Couleur de fond au survol */
+    --background-activated: #000000; /* Couleur de fond lors de l'activation */
+    --background-focused: #000000; /* Couleur de fond lorsque le bouton est focus */
+  
+    --color: #00ff00; /* Couleur du texte par défaut */
+    --color-hover: #00ff00; /* Couleur du texte au survol */
+    --color-activated: #00ff00; /* Couleur du texte lors de l'activation */
+    --color-focused: #00ff00; /* Couleur du texte lorsque le bouton est focus */
+  
+    --border-radius: 10px; /* Rayon de la bordure */
+    --border-color: #00ff00; /* Couleur de la bordure par défaut */
+    --border-style: solid; /* Style de la bordure */
+    --border-width: 2px; /* Largeur de la bordure */
+  
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+
+  }
+
+  ion-icon {
+    font-size: 32px;
+    position: relative;
+    top: 10px;
+  }
+  
+  
