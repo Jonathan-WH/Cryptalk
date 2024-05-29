@@ -124,3 +124,19 @@ font-size: 16px;
 ion-back-button {
   color: #00ff00;
 }
+
+.greenborderheader {
+  border-bottom: 2px solid #00ff00;
+}
+
+div.loader {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  ion-spinner {
+    margin: auto auto;
+    color: #00ff00;
+    width: 100px;
+    height: 100px;
+  }
+}

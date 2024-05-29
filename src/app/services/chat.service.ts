@@ -33,9 +33,15 @@ export class ChatService {
     const contacts = this.contactService.getContacts();
     return Promise.all(conversations.map(async convo => {
       const messages = await convo.messages();
+      const lastMessage = messages[messages.length - 1];
+
+      console.log('Last Message:', lastMessage); // Ajoutez ce log pour vérifier les données
+
+      
       return {
         peerName: contacts.find(c => c.address === convo.peerAddress)?.name || 'Unknown',
-        lastMessage: messages[messages.length - 1]?.content || 'No messages',
+        lastMessage: lastMessage?.content || 'No messages',
+        lastMessageDate: lastMessage ? new Date(lastMessage.sent) : new Date(),
         adress: convo.peerAddress
       };
     }));

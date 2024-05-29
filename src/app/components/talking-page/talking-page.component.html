@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="greenborderheader">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button (click)="goBack()" defaultHref="/contacts-page"></ion-back-button>
@@ -9,7 +9,7 @@
 
 
 <ion-content>
-  <div class="message-area" #messageArea>
+  <div *ngIf="messages.length > 0" class="message-area" #messageArea>
     <ul>
       <div *ngFor="let message of messages; let i = index">
         <p class="time-message" *ngIf="showTimestamp(i)">----- {{ (message.timestamp | timestamp) }} -----</p>
@@ -18,6 +18,9 @@
         </li>
       </div>
     </ul>
+  </div>
+  <div class="loader" *ngIf="messages.length === 0">
+    <ion-spinner name="lines-sharp"></ion-spinner>
   </div>
 </ion-content>
 

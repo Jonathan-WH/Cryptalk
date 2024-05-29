@@ -7,12 +7,14 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { DecodedMessage } from '@xmtp/xmtp-js';
 import { Router } from '@angular/router';
+import { TimestampPipe } from '../../pipe/timestamp.pipe';
+import { TruncateWordsPipe } from '../../pipe/tronc-message-received-talks.pipe'
 
 @Component({
   selector: 'app-talks-page',
   templateUrl: './talks-page.component.html',
   styleUrls: ['./talks-page.component.scss'],
-  imports: [NavigationMenuComponent, CommonModule, IonicModule],
+  imports: [NavigationMenuComponent, CommonModule, IonicModule, TimestampPipe, TruncateWordsPipe],
   standalone: true
 })
 export class TalksPageComponent implements OnInit, OnDestroy {
@@ -26,7 +28,7 @@ export class TalksPageComponent implements OnInit, OnDestroy {
   ) { }
 
   startChat(contactAdress: string): void {
-    this.router.navigate(['/talking-page', {address: contactAdress}]);
+    this.router.navigate(['/talking-page', { address: contactAdress }]);
   }
 
   async ngOnInit() {
