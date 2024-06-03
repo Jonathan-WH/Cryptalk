@@ -18,6 +18,24 @@ ion-item {
     padding: 5px;
     top: 0px;
   }
+
+  ion-icon.bell {
+    position: relative;
+    top: 7px;
+    color: red;
+    border: 2px solid red;
+    border-radius: 15px;
+    padding: 2px;
+    font-size: 18px;
+}
+  
+
+  ion-text.notif {
+    position: relative;
+    font-weight: 700;
+    left: -17px;
+    top: -2px;
+}
   
   .date-time {
     font-size: 0.8em;

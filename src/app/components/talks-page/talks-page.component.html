@@ -2,7 +2,7 @@
   <ion-accordion-group #waitingAccordion>
     <ion-accordion value="waitingConversations">
       <ion-item slot="header">
-        <ion-label class="waiting-list">Conversations en attente ({{ (waitingConversations$ | async)?.length }})</ion-label>
+        <ion-label class="waiting-list">Conversations en attente <ion-icon class="bell" *ngIf="((waitingConversations$ | async)!.length) > 0" src="../../../assets/SVG/bell.svg"></ion-icon> <ion-text *ngIf="((waitingConversations$ | async)!.length) !== 0" class="notif">{{ (waitingConversations$ | async)?.length }}</ion-text>  </ion-label>
       </ion-item>
       <ion-list slot="content">
         <ion-item *ngFor="let conversation of waitingConversations$ | async" class="message-list">
