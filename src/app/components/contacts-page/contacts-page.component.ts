@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { NavigationMenuComponent } from "../navigation-menu/navigation-menu.component";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contacts-page',
@@ -15,15 +16,15 @@ import { NavigationMenuComponent } from "../navigation-menu/navigation-menu.comp
   standalone: true,
 })
 export class ContactsPageComponent implements OnInit {
-  newContactName: string = '';
-  newContactAddress: string = '';
-  contacts: ContactInterface[] = [];
+  contacts$: Observable<ContactInterface[]>;
 
   constructor(
     private contactService: ContactService,
     private alertController: AlertController,
     private router: Router
-  ) {}
+  ) {
+    this.contacts$ = this.contactService.contacts$;
+  }
 
   ngOnInit() {
     this.loadContacts();
@@ -33,44 +34,16 @@ export class ContactsPageComponent implements OnInit {
     this.router.navigate(['/add-contact']);
   }
 
-  async deleteContact(contactId: string, event: Event) {
-    event.stopPropagation();
-
-    const alert = await this.alertController.create({
-      header: 'Confirmer la suppression',
-      message: 'Voulez-vous vraiment supprimer ce contact ?',
-      buttons: [
-        {
-          text: 'Annuler',
-          role: 'cancel',
-          handler: () => {
-            console.log('Suppression annulée');
-          }
-        }, {
-          text: 'Supprimer',
-          handler: () => {
-            this.contactService.deleteContact(contactId);
-            this.loadContacts();
-            console.log('Contact supprimé');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
   loadContacts() {
-    this.contacts = this.contactService.getContacts();
-    console.log('Loaded contacts:', this.contacts);
+    console.log('Loaded contacts:', this.contactService.getContacts());
   }
 
   startChat(contactAddress: string) {
-    this.router.navigate(['/talking-page', { address: contactAddress }]);
+    this.router.navigate(['/talking-page', { adress: contactAddress }]);
   }
 
   showInfo(contact: ContactInterface, event: Event) {
     event.stopPropagation();
-    // Ajoutez ici la logique pour afficher des informations supplémentaires
-    console.log('Informations sur le contact:', contact);
+    this.router.navigate(['/contact-details', { id: contact.id }]);
   }
 }

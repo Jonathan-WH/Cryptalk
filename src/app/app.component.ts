@@ -19,8 +19,13 @@ export class AppComponent {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // Vérifiez si l'URL contient 'talking-page' ou 'add-contact'
-        this.showNavigationMenu = !event.url.includes('talking-page') && 
-        !event.url.includes('add-contact');
+        this.showNavigationMenu = 
+        !event.url.includes('talking-page') && 
+        !event.url.includes('add-contact') && 
+        !event.url.includes('home-no-connected') && 
+        !event.url.includes('connect-with-existing-account') && 
+        !event.url.includes('contact-details') &&
+        !event.url.includes('home-new-user') 
       }
     });
   }

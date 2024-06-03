@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WalletManagementService } from '../../services/wallet-management.service';
 import { Router } from '@angular/router';
 import { IsAuthService } from '../../services/is-auth.service';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, AlertController } from '@ionic/angular';
 import { SplashScreenComponent } from '../splash-screen/splash-screen.component';
 
 
@@ -11,7 +11,8 @@ import { SplashScreenComponent } from '../splash-screen/splash-screen.component'
   templateUrl: './home-no-connected.component.html',
   styleUrls: ['./home-no-connected.component.scss'],
   standalone: true,
-  imports: [IonicModule, SplashScreenComponent]
+  imports: [IonicModule, SplashScreenComponent,
+  ]
 })
 export class HomeNoConnectedComponent implements OnInit{
   constructor(
@@ -20,7 +21,9 @@ export class HomeNoConnectedComponent implements OnInit{
 
     private router: Router,
 
-    private IsauthService: IsAuthService
+    private IsauthService: IsAuthService,
+     
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -31,7 +34,7 @@ export class HomeNoConnectedComponent implements OnInit{
    try {
     await this.walletService.createNewAccount();
     //redirigez l'utilisateur 
-    this.router.navigate(['/home-connected']);
+    this.router.navigate(['/home-new-user']);
    } catch (error) {
     console.error('Failed to create a new account', error)
    }
@@ -40,6 +43,24 @@ export class HomeNoConnectedComponent implements OnInit{
   async connectWithExistingAccount() {
    this.router.navigate(['/connect-with-existing-account']);
    }
+
+   async confirmCreateNewAccount() {
+    const alert = await this.alertController.create({
+      header: 'Create New Account',
+      message: 'Are you sure you want to create a new account?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Accept',
+          handler: () => this.createNewAccount()
+        }
+      ]
+    });
+    await alert.present();
+  }
   
 
 

@@ -37,7 +37,8 @@ export class WalletManagementService {
       // Store or use the wallet safely
       localStorage.setItem('walletPrivateKey', wallet.privateKey);
       localStorage.setItem('walletAddress', wallet.address);
-      localStorage.setItem('walletMnemonic', mnemonic);;
+      localStorage.setItem('walletMnemonic', mnemonic);
+    
       
       return wallet;
     } catch (error) {
@@ -48,6 +49,10 @@ export class WalletManagementService {
 
   getCurrentWalletAddress(): string | null {
     return localStorage.getItem('walletAddress');
+  }
+
+  getMnemonicPhrase(): string | null {
+    return localStorage.getItem('walletMnemonic') || '';
   }
 }
 

@@ -1,4 +1,82 @@
-.error-message {
-    color: red;
-    margin-top: 10px;
-  }
+:host {
+  --background: black;
+  --text-color: #00ff00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Height of the viewport */
+}
+
+ion-header {
+  --background: black;
+  --color: #00ff00;
+}
+
+ion-toolbar {
+  --background: black;
+}
+
+ion-title {
+  color: #00ff00;
+}
+
+ion-content {
+  --background: black;
+  color: #00ff00;
+  display: flex;
+}
+
+ion-grid {
+  display: flex;
+  flex-direction: column;
+ align-self: center;
+}
+
+ion-label {
+  color: #00ff00;
+}
+
+ion-input {
+  color: #00ff00;
+}
+
+ion-button {
+
+  --background: #000000; /* Couleur de fond par défaut */
+  --background-hover: #000000; /* Couleur de fond au survol */
+  --background-activated: #000000; /* Couleur de fond lors de l'activation */
+  --background-focused: #000000; /* Couleur de fond lorsque le bouton est focus */
+
+  --color: #00ff00; /* Couleur du texte par défaut */
+  --color-hover: #00ff00; /* Couleur du texte au survol */
+  --color-activated: #00ff00; /* Couleur du texte lors de l'activation */
+  --color-focused: #00ff00; /* Couleur du texte lorsque le bouton est focus */
+
+  --border-radius: 10px; /* Rayon de la bordure */
+  --border-color: #00ff00; /* Couleur de la bordure par défaut */
+  --border-style: solid; /* Style de la bordure */
+  --border-width: 2px; /* Largeur de la bordure */
+
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+}
+
+ion-back-button {
+  color: #00ff00;
+}
+
+ion-text {
+  text-align: center;
+}
+
+.greenborderheader {
+  border-bottom: 2px solid #00ff00;
+}
+
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

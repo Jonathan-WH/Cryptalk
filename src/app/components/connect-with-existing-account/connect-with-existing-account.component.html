@@ -1,5 +1,37 @@
-<div>
-    <input type="text" [(ngModel)]="mnemonic" placeholder="Enter your mnemonic phrase">
-    <button (click)="connect()">Connect</button>
+<ion-header class="greenborderheader">
+ 
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home-no-connected"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="center-content">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="stacked" >Enter your mnemonic phrase</ion-label>
+            <ion-input [(ngModel)]="mnemonic" type="text" placeholder="e.g. apple banana cherry ..." clearInput></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button fill="outline" expand="block" (click)="connect()">Connect</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="errorMessage">
+        <ion-col size="12">
+          <ion-text color="danger">{{ errorMessage }}</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+ 
+  
   </div>
-  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+   </ion-content>

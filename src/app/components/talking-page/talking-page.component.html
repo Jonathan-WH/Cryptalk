@@ -3,13 +3,28 @@
     <ion-buttons slot="start">
       <ion-back-button (click)="goBack()" defaultHref="/contacts-page"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ (contactName | titlecase) || "Unknown" }}</ion-title>
+    <ion-title  >
+      <ion-text *ngIf="contactName !== '(Unknown)'">{{ (contactName | titlecase)  }}</ion-text><ion-spinner *ngIf="contactName === '(Unknown)' || contactName === '' || contactName === 'Unknown' "  name="bubbles" ></ion-spinner>
+  </ion-title>
+  
+    <ion-buttons slot="end" *ngIf="contactName === '(Unknown)'">
+      <ion-button (click)="navigateToInfoContact(contactAddress || '')"> Set Name
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
+
 <ion-content>
+
   <div *ngIf="messages.length > 0" class="message-area" #messageArea>
+    
+     <ion-infinite-scroll  position="top" (ionInfinite)="loadMoreMessages($event)" [disabled]="isInfiniteScrollDisabled">
+    <ion-infinite-scroll-content loadingSpinner="circles" loadingText="Loading...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
     <ul>
       <div *ngFor="let message of messages; let i = index">
         <p class="time-message" *ngIf="showTimestamp(i)">----- {{ (message.timestamp | timestamp) }} -----</p>

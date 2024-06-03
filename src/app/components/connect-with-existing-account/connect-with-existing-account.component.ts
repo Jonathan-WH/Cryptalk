@@ -5,11 +5,12 @@ import { XmtpCreateClientService } from '../../services/xmtp-create-client.servi
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ethers } from 'ethers';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-connect-with-existing-account',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, IonicModule],
   templateUrl: './connect-with-existing-account.component.html',
   styleUrl: './connect-with-existing-account.component.scss'
 })
@@ -25,6 +26,16 @@ export class ConnectWithExistingAccountComponent {
   ) {}
 
   async connect () {
+
+     // Nettoyer et formater la phrase mnémonique
+     this.mnemonic = this.mnemonic.trim().toLowerCase();
+    
+     if (this.mnemonic === '') {
+       this.errorMessage = 'Mnemonic phrase cannot be empty';
+       return;
+     }
+
+     
     try {
       const result = await this.walletService.connectWithMnemonic(this.mnemonic);
       if (result) {

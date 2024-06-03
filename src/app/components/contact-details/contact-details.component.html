@@ -1,8 +1,55 @@
-<ion-header>
+<ion-header class="greenborderheader">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/contacts-page"></ion-back-button>
     </ion-buttons>
-    <ion-title>Info of</ion-title>
+    <ion-title>Info of {{ contact?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content *ngIf="contact">
+  <ion-list class="contact-area">
+    <ion-item class="greenborder">
+      <ion-label position="floating">Contact Name :</ion-label>
+      <ion-input type="text" [(ngModel)]="contact!.name" ></ion-input>
+    </ion-item>
+
+    <ion-item class="greenborder">
+      <ion-label position="floating">Contact Address Wallet :</ion-label>
+      <ion-input type="text" [(ngModel)]="contact!.address" ></ion-input>
+    </ion-item>
+
+    <ion-item class="greenborder">
+      <ion-label position="floating"><ion-icon src="../../../assets/SVG/bitcoin.svg"></ion-icon> Address Wallet :</ion-label>
+      <ion-input type="text" [(ngModel)]="contact!.btcadress" ></ion-input>
+    </ion-item>
+
+    <ion-item class="greenborder">
+      <ion-label position="floating"><ion-icon src="../../../assets/SVG/ethereum.svg"></ion-icon> Address Wallet :</ion-label>
+      <ion-input type="text" [(ngModel)]="contact!.ethadress" ></ion-input>
+    </ion-item>
+
+    <ion-item class="greenborder">
+      <ion-label position="floating"><ion-icon src="../../../assets/SVG/usdt.svg"></ion-icon> Address Wallet :</ion-label>
+      <ion-input type="text" [(ngModel)]="contact!.usdtadress"></ion-input>
+    </ion-item>
+
+    <ion-item class="greenborder">
+      <ion-label position="floating"><ion-icon src="../../../assets/SVG/bnb.svg"></ion-icon> Address Wallet :</ion-label>
+      <ion-input type="text" [(ngModel)]="contact!.bnbadress" ></ion-input>
+    </ion-item>
+
+    <ion-item class="greenborder">
+      <ion-label position="floating"><ion-icon src="../../../assets/SVG/solana.svg"></ion-icon> Address Wallet :</ion-label>
+      <ion-input type="text" [(ngModel)]="contact!.soladress" ></ion-input>
+    </ion-item>
+
+    <ion-item class="greenborder">
+      <ion-label position="floating">Note :</ion-label>
+      <ion-textarea type="text" [(ngModel)]="contact!.note" ></ion-textarea>
+    </ion-item>
+
+    <ion-button fill="outline" shape="" class="update-contact" expand="block" (click)="updateContact()">Update Contact</ion-button>
+    <ion-button color="danger" fill="outline" shape="round" class="delete-contact" expand="block" (click)="deleteContact()">Delete Contact</ion-button>
+  </ion-list>
+</ion-content>

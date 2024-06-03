@@ -2,23 +2,24 @@
   <ion-toolbar>
     <ion-title>Contact</ion-title>
     <ion-button size="small" fill="clear" slot="end" (click)="navigateToAddContact()">
-      <ion-icon src="../../../assets/SVG/addcontact.svg"></ion-icon>
+      <ion-icon class="add" src="../../../assets/SVG/addcontact.svg"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ng-container *ngFor="let contact of contacts; let i = index">
+    <ng-container *ngFor="let contact of contacts$ | async; let i = index">
       <ion-item (click)="startChat(contact.address)" class="greenborder">
+        <ion-avatar slot="start">
+          <ion-icon class="avatar" src="../../../assets/SVG/ninja.svg" alt="Avatar"></ion-icon>
+        </ion-avatar>
         <ion-label>
           {{ contact.name | titlecase }}
         </ion-label>
         <ion-button fill="clear" (click)="showInfo(contact, $event)">
-          <ion-icon src="../../../assets/SVG/info.svg"></ion-icon>
+          <ion-icon class="info" src="../../../assets/SVG/info.svg"></ion-icon>
         </ion-button>
-        <!-- Uncomment the line below if you want to use the delete button -->
-        <!-- <ion-button fill="clear" (click)="deleteContact(contact.id, $event)">Delete</ion-button> -->
       </ion-item>
     </ng-container>
   </ion-list>

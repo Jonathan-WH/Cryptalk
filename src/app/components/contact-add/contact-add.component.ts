@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { WalletManagementService } from '../../services/wallet-management.service';
 import { ContactService, ContactInterface } from '../../services/contact.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule, AlertController } from '@ionic/angular';
-import { Router, NavigationEnd } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-contact-add',
@@ -28,7 +29,8 @@ export class ContactAddComponent implements OnInit {
     private walletService: WalletManagementService,
     private contactService: ContactService,
     private alertController: AlertController,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     // Écouter les événements de navigation
     this.router.events.subscribe(event => {
@@ -38,17 +40,11 @@ export class ContactAddComponent implements OnInit {
     });
   }
 
-
-
   startChat(contactAddress: string): void {
     this.router.navigate(['/talking-page', { address: contactAddress }]);
   }
 
   async ngOnInit() {
-
-    // Réinitialiser les champs du formulaire
-    this.resetForm();
-
     // Charger les contacts existants
     this.contacts = this.contactService.getContacts();
 
@@ -59,6 +55,14 @@ export class ContactAddComponent implements OnInit {
     } else {
       console.error('Failed to connect to wallet');
     }
+
+    // Récupérer l'adresse depuis les paramètres de l'URL
+    this.route.paramMap.subscribe(params => {
+      const address = params.get('address');
+      if (address) {
+        this.newContactAddress = address.trim().toLowerCase(); // Suppression des espaces et mise en minuscules
+      }
+    });
   }
 
   resetForm(): void {
@@ -73,8 +77,6 @@ export class ContactAddComponent implements OnInit {
   }
 
   async addContact(): Promise<void> {
-    console.log('test');
-
     const sanitizedNewContactName = this.newContactName.trim().toLowerCase();
     const sanitizedNewContactAddress = this.newContactAddress.trim().toLowerCase();
 
@@ -101,8 +103,7 @@ export class ContactAddComponent implements OnInit {
       return;
     }
 
-    if (!this.newContactName || !this.newContactAddress) {
-      console.log('Missing required fields');
+    if (!this.newContactName || !sanitizedNewContactAddress) {
       const alert = await this.alertController.create({
         header: 'Champs obligatoires',
         message: 'Le nom et l\'adresse du contact sont obligatoires.',
@@ -115,7 +116,7 @@ export class ContactAddComponent implements OnInit {
     const newContact: ContactInterface = {
       id: Date.now().toString(), // Génération d'un identifiant unique pour le contact
       name: this.newContactName,
-      address: this.newContactAddress,
+      address: sanitizedNewContactAddress,
       btcadress: this.newContactBtcWallet,
       ethadress: this.newContactEthWallet,
       usdtadress: this.newContactUsdtWallet,
@@ -124,14 +125,7 @@ export class ContactAddComponent implements OnInit {
       note: this.newContactNote
     };
     this.contactService.addContact(newContact);
-    this.newContactName = '';
-    this.newContactAddress = '';
-    this.newContactBtcWallet = '';
-    this.newContactEthWallet = '';
-    this.newContactUsdtWallet = '';
-    this.newContactBnbWallet = '';
-    this.newContactSolWallet = '';
-    this.newContactNote = '';
+    this.resetForm();
 
     // Redirection vers la page des contacts lorsque le contact est ajouté
     this.router.navigate(['/contacts-page']);

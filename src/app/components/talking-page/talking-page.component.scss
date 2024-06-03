@@ -125,6 +125,12 @@ ion-back-button {
   color: #00ff00;
 }
 
+ion-button {
+  --color: #00ff00;
+  
+
+}
+
 .greenborderheader {
   border-bottom: 2px solid #00ff00;
 }
@@ -140,3 +146,20 @@ div.loader {
     height: 100px;
   }
 }
+
+on-spinner svg {
+  color: #00ff00;  
+}
+
+.green {
+  color: #00ff00;
+  
+}
+
+ion-infinite-scroll {
+  --color: #00ff00;
+  height: 12%;
+}
+
+
+
