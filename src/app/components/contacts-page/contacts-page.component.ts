@@ -39,7 +39,7 @@ export class ContactsPageComponent implements OnInit {
   }
 
   startChat(contactAddress: string) {
-    this.router.navigate(['/talking-page', { adress: contactAddress }]);
+    this.router.navigate(['/talking-page', { address: contactAddress }]);
   }
 
   showInfo(contact: ContactInterface, event: Event) {

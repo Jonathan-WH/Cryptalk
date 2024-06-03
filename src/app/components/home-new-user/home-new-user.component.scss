@@ -1,31 +1,31 @@
 
 ion-icon {
-    color: rgba(255, 0, 0, 0.731);
+    color: rgb(255, 0, 0);
 }
 ion-card {
   --border-radius: 10px;
   --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: 10px;
-  border: 1px solid #00ff0080;
+  border: 1px solid #00ff00;
 }
 
 ion-card-header {
 
-  border-bottom: 1px solid #00ff0080;
+  border-bottom: 1px solid #00ff00;
 }
 
 ion-card-title {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.7em;
   text-align: center;
 }
 
 ion-card-content {
-  font-size: 1em;
   line-height: 1.5;
 }
 
 ion-card-content p  {
+  font-size: 1.05em;
   padding: 10px;
   color: white;
 }
@@ -41,6 +41,7 @@ ion-textarea {
   --padding-end: 0;
   --padding-top: 10px;
   --padding-bottom: 10px;
+  font-size: 1.3em;
   
 }
 
@@ -60,19 +61,10 @@ ion-button.understand-button {
     --color-hover: #00ff00; /* Couleur du texte au survol */
     --color-activated: #00ff00; /* Couleur du texte lors de l'activation */
     --color-focused: #00ff00; /* Couleur du texte lorsque le bouton est focus */
-  
-    --border-radius: 10px; /* Rayon de la bordure */
-    --border-color: #00ff00; /* Couleur de la bordure par défaut */
-    --border-style: solid; /* Style de la bordure */
-    --border-width: 2px; /* Largeur de la bordure */
-  
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-
-
     width: 80%;
     margin: 20px auto 20px auto;
 
     border: solid;
+    border-radius: 20px;
 
   }

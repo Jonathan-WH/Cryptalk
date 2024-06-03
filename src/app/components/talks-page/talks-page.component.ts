@@ -29,6 +29,7 @@ export class TalksPageComponent implements OnInit, OnDestroy {
   acceptedConversations$ = this.chatService.conversations$.pipe(
     map(conversations => conversations.filter(convo => convo.peerName !== 'Unknown'))
   );
+ 
   messageStream: AsyncIterableIterator<DecodedMessage> | null = null;
   private conversationsSubscription: Subscription | undefined;
 
@@ -77,17 +78,16 @@ export class TalksPageComponent implements OnInit, OnDestroy {
   }
 
   async showAcceptDialog(conversation: any) {
-    this.router.navigate(['/talking-page', { adress: conversation }]);
+    this.router.navigate(['/talking-page', { address: conversation }]);
     const alert = await this.alertController.create({
       header: 'Nouvelle conversation',
       message: `Acceptez-vous cette nouvelle conversation ou voulez-vous la supprimer ?`,
       buttons: [
         {
-          text: 'Delete',
-          handler: async () => {
-            await this.chatService.deleteConversation(conversation);
+          text: 'Back',
+          role: 'cancel',
+          handler: () => {
             this.router.navigate(['/talks-page']);
-            this.chatService.updateConversations(); // Ensure the conversations are updated
           }
         },
         {
@@ -110,13 +110,15 @@ export class TalksPageComponent implements OnInit, OnDestroy {
           }
         },
         {
-          text: 'Back',
-          role: 'cancel',
-          handler: () => {
+          text: 'Delete',
+          handler: async () => {
+            await this.chatService.deleteConversation(conversation);
             this.router.navigate(['/talks-page']);
+            this.chatService.updateConversations(); // Ensure the conversations are updated
           }
         }
-      ]
+      ],
+      cssClass: 'custom-alertDouble'
     });
 
     await alert.present();
@@ -139,14 +141,15 @@ export class TalksPageComponent implements OnInit, OnDestroy {
         {
           text: 'Supprimer',
           handler: async () => {
-            await this.chatService.deleteConversation(conversation.adress);
+            await this.chatService.deleteConversation(conversation.address);
             slidingItem.close(); // Close sliding item
             console.log('Conversation supprimée');
             this.chatService.updateConversations(); // Ensure the conversations are updated
 
           }
         }
-      ]
+      ],
+      cssClass: 'custom-alertDouble'
     });
 
     await alert.present();
@@ -158,12 +161,12 @@ export class TalksPageComponent implements OnInit, OnDestroy {
 
   onItemClick(conversation: any) {
     if (conversation.peerName !== 'Unknown') {
-      console.log('Navigating to chat with', conversation.adress);
-      this.startChat(conversation.adress);
+      console.log('Navigating to chat with', conversation.address);
+      this.startChat(conversation.address);
     }
   }
 
   startChat(contactAdress: string): void {
-    this.router.navigate(['/talking-page', { adress: contactAdress }]);
+    this.router.navigate(['/talking-page', { address: contactAdress }]);
   }
 }

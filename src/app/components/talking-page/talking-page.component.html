@@ -20,7 +20,7 @@
 
   <div *ngIf="messages.length > 0" class="message-area" #messageArea>
     
-     <ion-infinite-scroll  position="top" (ionInfinite)="loadMoreMessages($event)" [disabled]="isInfiniteScrollDisabled">
+     <ion-infinite-scroll threshold="50px"  position="top" (ionInfinite)="loadMoreMessages($event)" [disabled]="isInfiniteScrollDisabled">
     <ion-infinite-scroll-content loadingSpinner="circles" loadingText="Loading...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>

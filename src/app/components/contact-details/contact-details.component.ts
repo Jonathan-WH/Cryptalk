@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ContactInterface, ContactService } from '../../services/contact.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonicModule, AlertController } from '@ionic/angular';
-import { CommonModule } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChatService } from '../../services/chat.service';
 
@@ -37,7 +37,8 @@ export class ContactDetailsComponent implements OnInit {
       const alert = await this.alertController.create({
         header: 'Success',
         message: 'Contact updated successfully.',
-        buttons: ['OK']
+        buttons: ['OK'],
+        cssClass: 'custom-alert' 
       });
       await alert.present();
       this.router.navigate(['/contacts-page']);
@@ -47,7 +48,7 @@ export class ContactDetailsComponent implements OnInit {
   async deleteContact() {
     if (this.contact) {
       const alert = await this.alertController.create({
-        header: 'Confirm Deletion',
+        header: 'Confirm delete contact',
         message: `Are you sure you want to delete ${this.contact!.name}? The conversation history will be deleted.`,
         buttons: [
           {
@@ -69,7 +70,8 @@ export class ContactDetailsComponent implements OnInit {
               this.router.navigate(['/contacts-page']);
             }
           }
-        ]
+        ],
+        cssClass: 'custom-alertDouble' 
       });
       await alert.present();
     }

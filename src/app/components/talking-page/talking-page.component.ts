@@ -87,7 +87,7 @@ export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked
       return;
     }
 
-    this.contactAddress = this.route.snapshot.paramMap.get('adress');
+    this.contactAddress = this.route.snapshot.paramMap.get('address');
     console.log('Contact address:', this.contactAddress);
     if (!this.contactAddress) {
       console.error('No contact address provided');

@@ -46,7 +46,7 @@ export class ChatService {
           peerName: contacts.find(c => c.address === convo.peerAddress)?.name || 'Unknown',
           lastMessage: lastMessage?.content || 'No messages',
           lastMessageDate: lastMessage ? new Date(lastMessage.sent) : new Date(),
-          adress: convo.peerAddress
+          address: convo.peerAddress
         };
       }));
   }
@@ -124,6 +124,10 @@ export class ChatService {
     const conversations = await this.listConversations();
     console.log('Updating conversations', conversations);
     this.conversationsSubject.next(conversations);
+  }
+
+   async getPeerName(conversations: any[]): Promise<string[]> {
+    return  conversations.map(convo => convo.peerName);
   }
 
 }

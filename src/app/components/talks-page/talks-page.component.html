@@ -2,7 +2,7 @@
   <ion-accordion-group #waitingAccordion>
     <ion-accordion value="waitingConversations">
       <ion-item slot="header">
-        <ion-label class="waiting-list">Conversations en attente <ion-icon class="bell" *ngIf="((waitingConversations$ | async)!.length) > 0" src="../../../assets/SVG/bell.svg"></ion-icon> <ion-text *ngIf="((waitingConversations$ | async)!.length) !== 0" class="notif">{{ (waitingConversations$ | async)?.length }}</ion-text>  </ion-label>
+        <ion-label class="waiting-list">Conversations en attente <ion-icon class="bell" *ngIf="((waitingConversations$ | async)!.length) > 0" src="../../../assets/SVG/chat.svg"></ion-icon> <ion-text *ngIf="((waitingConversations$ | async)!.length) !== 0" class="notif">{{ (waitingConversations$ | async)?.length }}</ion-text>  </ion-label>
       </ion-item>
       <ion-list slot="content">
         <ion-item *ngFor="let conversation of waitingConversations$ | async" class="message-list">
@@ -21,7 +21,7 @@
                 </ion-col>
 
                 <ion-col size="2">
-                  <ion-button fill="outline" (click)="showAcceptDialog(conversation.adress)">
+                  <ion-button fill="outline" (click)="showAcceptDialog(conversation.address)">
                     <ion-icon class="green" src="../../../assets/SVG/valid.svg"></ion-icon>
                     <ion-icon class="red" src="../../../assets/SVG/xmark.svg"></ion-icon>
                   </ion-button>

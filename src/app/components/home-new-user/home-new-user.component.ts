@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { WalletManagementService } from '../../services/wallet-management.service';
 import { IonicModule } from '@ionic/angular';
@@ -18,16 +18,19 @@ export class HomeNewUserComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private walletService: WalletManagementService
+    private walletService: WalletManagementService,
+    private cd: ChangeDetectorRef
   ) { }
 
   async ngOnInit() {
     this.mnemonicPhrase = this.walletService.getMnemonicPhrase() || '';
     this.mnemonicPhraseMasked = this.mnemonicPhrase.split(' ').map(word => '*'.repeat(word.length)).join(' ');
+    this.cd.detectChanges(); // Ensure change detection runs after async operation
   }
 
   toggleShowMnemonic() {
     this.showMnemonic = !this.showMnemonic;
+    this.cd.detectChanges(); // Ensure change detection runs after the toggle
   }
 
   confirmAndProceed() {

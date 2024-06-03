@@ -1,135 +1,148 @@
 ion-item {
-    --padding-start: 0;
-    --padding-end: 0;
-    
-    border-bottom: 1px solid #00ff0080
-  }
-  
-  ion-avatar {
-    margin-right: 10px;
-  }
+  --padding-start: 0;
+  --padding-end: 0;
 
-  ion-icon.avatar-icon {
-    font-size: 26px;
-    position: relative;
-    right: -10px;
-    border: 1px solid #00ff0080;
-    border-radius: 50%;
-    padding: 5px;
-    top: 0px;
-  }
+  border-bottom: 1px solid #00ff0080
+}
 
-  ion-icon.bell {
-    position: relative;
-    top: 7px;
+ion-avatar {
+  margin-right: 10px;
+}
+
+ion-icon.avatar-icon {
+  font-size: 26px;
+  position: relative;
+  right: -10px;
+  border: 1px solid #00ff0080;
+  border-radius: 50%;
+  padding: 5px;
+  top: 0px;
+}
+
+ion-icon.bell {
+  position: relative;
+    top: -4px;
     color: red;
-    border: 2px solid red;
-    border-radius: 15px;
     padding: 2px;
-    font-size: 18px;
+    font-size: 19px;
+    left: -5px;
 }
-  
 
-  ion-text.notif {
-    position: relative;
-    font-weight: 700;
-    left: -17px;
-    top: -2px;
+
+ion-text.notif {
+  position: relative;
+  font-weight: 700;
+  left: -20px;
+  top: -12px;
 }
-  
-  .date-time {
-    font-size: 0.8em;
-    color: #999;
-    margin-top: 5px;
-  }
 
-  ion-label {
-    margin-left: 10px;
-    font-size: 32px;
-    --background-color: #000000;
+.date-time {
+  font-size: 0.8em;
+  color: #999;
+  margin-top: 5px;
+}
 
-  }
+ion-label {
+  margin-left: 10px;
+  font-size: 32px;
+  --background-color: #000000;
 
-  ion-label.waiting-list {
-  
-    font-size: 12px;
-  }
+}
 
-  ion-list-header.divider-talks {
-    font-weight: bold;
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,36,0,1) 100%);
-    border-bottom: 1px solid #00ff0080;
-    padding: 0px;
-  }
+ion-label.waiting-list {
 
-  ion-item.message-list {
-    border-bottom: 1px solid #00ff0080;
-  }
+  font-size: 12px;
+}
 
- 
+ion-list-header.divider-talks {
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 36, 0, 1) 100%);
+  border-bottom: 1px solid #00ff0080;
+  padding: 0px;
+}
 
-  .greenborderheader {
-    border-bottom: 2px solid #00ff00;
-  }
+ion-item.message-list {
+  border-bottom: 1px solid #00ff0080;
+}
 
-  .greenborder {
-    border-bottom: 1px solid #00ff0080;
-  }
 
-  .date-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-  }
-  
-  .day {
-    font-size: 0.7em;
-    color: #999;
-    margin: 0;
-  }
-  
-  .date-time {
-    font-size: 0.7em;
-    color: #999;
-    margin: 0;
-  }
 
-  div.loader {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    ion-spinner {
-      margin: auto;
-      color: #00ff00;
-      width: 100px;
-      height: 100px;
-    }
-  }
+.greenborderheader {
+  border-bottom: 2px solid #00ff00;
+}
 
-  .green {
+.greenborder {
+  border-bottom: 1px solid #00ff0080;
+}
+
+.date-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.day {
+  font-size: 0.7em;
+  color: #999;
+  margin: 0;
+}
+
+.date-time {
+  font-size: 0.7em;
+  color: #999;
+  margin: 0;
+}
+
+div.loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+  ion-spinner {
+    margin: auto;
     color: #00ff00;
-    font-size: 13px;
+    width: 100px;
+    height: 100px;
   }
+}
 
-  .red
-   {
-    font-size: 13px;
-    color: #ff0000;
-   }
+.green {
+  color: #00ff00;
+  font-size: 13px;
+}
 
-   ion-button {
-    --border-color: #00ff00;
-    --color: white;
-   }
+.red {
+  font-size: 13px;
+  color: #ff0000;
+}
 
-   .disabled-item {
-    pointer-events: none;
-    opacity: 0.6;
-  }
+ion-button {
+  --border-color: #00ff00;
+  --color: white;
+}
 
-  ion-item-option {
-    --background: tranparent;
-  }
-  
-  
+.disabled-item {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+ion-item-option {
+  --background: tranparent;
+}
+
+ /* global.css */
+ ::ng-deep .custom-alert .alert-wrapper, ::ng-deep .custom-alertDouble .alert-wrapper{
+  border: 1px solid #00ff00;
+  border-radius: 5px;
+}
+
+::ng-deep .custom-alert .alert-button, ::ng-deep .custom-alertDouble .alert-button {
+  border: 1px solid #00ff00;
+  color: #00ff00 !important;
+}
+
+::ng-deep .custom-alertDouble .alert-button:last-child {
+  border: 1px solid #00ff00;
+  color: #ff0000 !important;
+}

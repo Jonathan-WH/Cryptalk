@@ -97,7 +97,8 @@ export class ContactAddComponent implements OnInit {
       const alert = await this.alertController.create({
         header: 'Duplication trouvée',
         message: message,
-        buttons: ['OK']
+        buttons: ['OK'],
+        cssClass: 'custom-alert'
       });
       await alert.present();
       return;
@@ -107,7 +108,8 @@ export class ContactAddComponent implements OnInit {
       const alert = await this.alertController.create({
         header: 'Champs obligatoires',
         message: 'Le nom et l\'adresse du contact sont obligatoires.',
-        buttons: ['OK']
+        buttons: ['OK'],
+        cssClass: 'custom-alert'
       });
       await alert.present();
       return;

@@ -50,14 +50,16 @@ export class HomeNoConnectedComponent implements OnInit{
       message: 'Are you sure you want to create a new account?',
       buttons: [
         {
+          text: 'Accept',
+          handler: () => this.createNewAccount()
+        },
+        {
           text: 'Cancel',
           role: 'cancel'
         },
-        {
-          text: 'Accept',
-          handler: () => this.createNewAccount()
-        }
-      ]
+        
+      ],
+      cssClass: 'custom-alertDouble'
     });
     await alert.present();
   }
