@@ -9,29 +9,28 @@ import { DecodedMessage } from '@xmtp/xmtp-js';
 import { Router } from '@angular/router';
 import { TimestampPipe } from '../../pipe/timestamp.pipe';
 import { TruncateWordsPipe } from '../../pipe/tronc-message-received-talks.pipe';
-import { ContactService, ContactInterface } from '../../services/contact.service';
-import { Observable, Subscription, map } from 'rxjs';
+import { ContactService } from '../../services/contact.service';
+import { Observable, map } from 'rxjs';
+import { RecentFirstPipe } from '../../pipe/recent-first.pipe';
 
 @Component({
   selector: 'app-talks-page',
   templateUrl: './talks-page.component.html',
   styleUrls: ['./talks-page.component.scss'],
-  imports: [NavigationMenuComponent, CommonModule, IonicModule, TimestampPipe, TruncateWordsPipe],
+  imports: [NavigationMenuComponent, CommonModule, IonicModule, TimestampPipe, TruncateWordsPipe, RecentFirstPipe],
   standalone: true
 })
 export class TalksPageComponent implements OnInit, OnDestroy {
   conversations$: Observable<any[]>;
-  waitingConversations: any[] = [];
-  waitingConversations$ = this.chatService.conversations$.pipe(
+
+  waitingConversations$ = this.chatService.combinedConversations$.pipe(
     map(conversations => conversations.filter(convo => convo.peerName === 'Unknown'))
   );
-  acceptedConversations: any[] = [];
-  acceptedConversations$ = this.chatService.conversations$.pipe(
+  acceptedConversations$ = this.chatService.combinedConversations$.pipe(
     map(conversations => conversations.filter(convo => convo.peerName !== 'Unknown'))
   );
- 
+
   messageStream: AsyncIterableIterator<DecodedMessage> | null = null;
-  private conversationsSubscription: Subscription | undefined;
 
   constructor(
     private walletService: WalletManagementService,
@@ -40,7 +39,7 @@ export class TalksPageComponent implements OnInit, OnDestroy {
     private alertController: AlertController,
     private contactService: ContactService
   ) {
-    this.conversations$ = this.chatService.conversations$;
+    this.conversations$ = this.chatService.combinedConversations$;
   }
 
   async ngOnInit() {
@@ -49,21 +48,18 @@ export class TalksPageComponent implements OnInit, OnDestroy {
       console.log('Connected to wallet', walletDetails);
       const wallet = new ethers.Wallet(walletDetails.privateKey);
       await this.chatService.initClient(wallet);
-      this.chatService.updateConversations(); // Ensure initial load of conversations
+      this.chatService.updateConversations();
       this.listenForNewMessages();
     } else {
       console.error('Failed to connect to wallet');
     }
 
-    
+    this.chatService.updateConversations();
   }
 
   ngOnDestroy() {
     if (this.messageStream) {
       this.messageStream.return?.();
-    }
-    if (this.conversationsSubscription) {
-      this.conversationsSubscription.unsubscribe();
     }
   }
 
@@ -93,20 +89,18 @@ export class TalksPageComponent implements OnInit, OnDestroy {
         {
           text: 'Accept',
           handler: () => {
-            this.contactService.addContact(
-              {
-                id: Date.now().toString(), // Génération d'un identifiant unique pour le contact
-                name: `(Unknown)`,
-                address: conversation,
-                btcadress: '',
-                ethadress: '',
-                usdtadress: '',
-                bnbadress: '',
-                soladress: '',
-                note: ''
-              }
-            );
-            this.chatService.updateConversations(); // Ensure the conversations are updated
+            this.contactService.addContact({
+              id: Date.now().toString(),
+              name: `(Unknown)`,
+              address: conversation,
+              btcadress: '',
+              ethadress: '',
+              usdtadress: '',
+              bnbadress: '',
+              soladress: '',
+              note: ''
+            });
+            this.chatService.updateConversations();
           }
         },
         {
@@ -114,7 +108,7 @@ export class TalksPageComponent implements OnInit, OnDestroy {
           handler: async () => {
             await this.chatService.deleteConversation(conversation);
             this.router.navigate(['/talks-page']);
-            this.chatService.updateConversations(); // Ensure the conversations are updated
+            this.chatService.updateConversations();
           }
         }
       ],
@@ -135,21 +129,20 @@ export class TalksPageComponent implements OnInit, OnDestroy {
           role: 'cancel',
           handler: () => {
             console.log('Suppression annulée');
-            slidingItem.close(); // Close sliding item
+            slidingItem.close();
           }
         },
         {
           text: 'Supprimer',
           handler: async () => {
             await this.chatService.deleteConversation(conversation.address);
-            slidingItem.close(); // Close sliding item
+            slidingItem.close();
             console.log('Conversation supprimée');
-            this.chatService.updateConversations(); // Ensure the conversations are updated
-
+            this.chatService.updateConversations();
           }
         }
       ],
-      cssClass: 'custom-alertDouble'
+      cssClass: 'custom-alertDoubledelete'
     });
 
     await alert.present();

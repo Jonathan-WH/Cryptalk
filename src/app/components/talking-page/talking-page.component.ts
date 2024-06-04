@@ -232,9 +232,7 @@ export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked
     return timeDifference > 5 * 60 * 1000;
   }
 
-  goBack() {
-    this.navCtrl.back();
-  }
+
 
   async loadMoreMessages(event: any) {
     console.log('Loading more messages...');

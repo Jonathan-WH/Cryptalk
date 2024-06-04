@@ -3,7 +3,8 @@ import { Client, DecodedMessage } from '@xmtp/xmtp-js';
 import { ethers } from 'ethers';
 import { EtherCreateAdressService } from './ether-create-adress.service';
 import { ContactService } from './contact.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export interface Message {
   content: string;
@@ -17,13 +18,23 @@ export interface Message {
 export class ChatService {
   private xmtpClient: Client | null = null;
   private conversationsSubject = new BehaviorSubject<any[]>([]);
-  public conversations$ = this.conversationsSubject.asObservable();
   private deletedConversationsKey = 'deletedConversations';
+
+  public combinedConversations$: Observable<any[]>;
 
   constructor(
     private etherCreateAdressService: EtherCreateAdressService,
     private contactService: ContactService
-  ) { }
+  ) {
+    this.combinedConversations$ = combineLatest([this.conversationsSubject.asObservable(), this.contactService.contacts$]).pipe(
+      map(([conversations, contacts]) => {
+        return conversations.map(convo => ({
+          ...convo,
+          peerName: contacts.find(c => c.address === convo.address)?.name || 'Unknown'
+        }));
+      })
+    );
+  }
 
   async initClient(wallet: ethers.Wallet): Promise<void> {
     this.xmtpClient = await Client.create(wallet);
@@ -34,7 +45,6 @@ export class ChatService {
       throw new Error('XMTP Client not initialized');
     }
     const conversations = await this.xmtpClient.conversations.list();
-    const contacts = this.contactService.getContacts();
     const deletedConversations = this.getDeletedConversations();
 
     return Promise.all(conversations
@@ -43,7 +53,7 @@ export class ChatService {
         const messages = await convo.messages();
         const lastMessage = messages[messages.length - 1];
         return {
-          peerName: contacts.find(c => c.address === convo.peerAddress)?.name || 'Unknown',
+          peerName: 'Unknown',
           lastMessage: lastMessage?.content || 'No messages',
           lastMessageDate: lastMessage ? new Date(lastMessage.sent) : new Date(),
           address: convo.peerAddress
@@ -59,7 +69,6 @@ export class ChatService {
     const preparedMessage = await conversation.prepareMessage(message);
     await preparedMessage.send();
 
-    // Remove the address from the deleted conversations list if it exists
     this.removeDeletedConversation(toAddress);
   }
 
@@ -96,16 +105,15 @@ export class ChatService {
     return this.xmtpClient.conversations.streamAllMessages();
   }
 
-  // Méthode pour supprimer une conversation localement
   deleteConversation(address: string): void {
     const deletedConversations = this.getDeletedConversations();
     if (!deletedConversations.includes(address)) {
       deletedConversations.push(address);
       localStorage.setItem(this.deletedConversationsKey, JSON.stringify(deletedConversations));
     }
+    this.updateConversations();
   }
 
-  // Méthode pour retirer une conversation supprimée localement
   removeDeletedConversation(address: string): void {
     let deletedConversations = this.getDeletedConversations();
     if (deletedConversations.includes(address)) {
@@ -114,20 +122,13 @@ export class ChatService {
     }
   }
 
-  // Méthode pour obtenir la liste des conversations supprimées
   getDeletedConversations(): string[] {
     const storedDeletedConversations = localStorage.getItem(this.deletedConversationsKey);
     return storedDeletedConversations ? JSON.parse(storedDeletedConversations) : [];
   }
 
- async updateConversations() {
+  async updateConversations() {
     const conversations = await this.listConversations();
-    console.log('Updating conversations', conversations);
     this.conversationsSubject.next(conversations);
   }
-
-   async getPeerName(conversations: any[]): Promise<string[]> {
-    return  conversations.map(convo => convo.peerName);
-  }
-
 }

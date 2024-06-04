@@ -7,12 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { NavigationMenuComponent } from "../navigation-menu/navigation-menu.component";
 import { Observable } from 'rxjs';
+import { SortPipe } from '../../pipe/sort.pipe';
 
 @Component({
   selector: 'app-contacts-page',
   templateUrl: './contacts-page.component.html',
   styleUrls: ['./contacts-page.component.scss'],
-  imports: [CommonModule, FormsModule, IonicModule, NavigationMenuComponent],
+  imports: [CommonModule, FormsModule, IonicModule, NavigationMenuComponent, SortPipe],
   standalone: true,
 })
 export class ContactsPageComponent implements OnInit {

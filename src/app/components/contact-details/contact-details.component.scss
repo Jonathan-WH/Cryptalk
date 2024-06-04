@@ -53,11 +53,13 @@
 
 ::ng-deep .custom-alert .alert-button, ::ng-deep .custom-alertDouble .alert-button {
   border: 1px solid #00ff00;
+  border-width: 1px 0px 0px 0px;
   color: #00ff00 !important;
 }
 
 ::ng-deep .custom-alertDouble .alert-button:last-child {
   border: 1px solid #00ff00;
+  border-width: 1px 0px 0px 1px;
   color: #ff0000 !important;
 }
 

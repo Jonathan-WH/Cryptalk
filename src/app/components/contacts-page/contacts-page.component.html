@@ -9,18 +9,20 @@
 
 <ion-content>
   <ion-list>
-    <ng-container *ngFor="let contact of contacts$ | async; let i = index">
-      <ion-item (click)="startChat(contact.address)" class="greenborder">
-        <ion-avatar slot="start">
-          <ion-icon class="avatar" src="../../../assets/SVG/ninja.svg" alt="Avatar"></ion-icon>
-        </ion-avatar>
-        <ion-label>
-          {{ contact.name | titlecase }}
-        </ion-label>
-        <ion-button fill="clear" (click)="showInfo(contact, $event)">
-          <ion-icon class="info" src="../../../assets/SVG/info.svg"></ion-icon>
-        </ion-button>
-      </ion-item>
+    <ng-container *ngIf="contacts$ | async as contacts">
+      <ng-container *ngFor="let contact of (contacts | sort: 'name'); let i = index">
+        <ion-item (click)="startChat(contact.address)" class="greenborder">
+          <ion-avatar slot="start">
+            <ion-icon class="avatar" src="../../../assets/SVG/ninja.svg" alt="Avatar"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            {{ contact.name | titlecase }}
+          </ion-label>
+          <ion-button fill="clear" (click)="showInfo(contact, $event)">
+            <ion-icon class="info" src="../../../assets/SVG/info.svg"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ng-container>
     </ng-container>
   </ion-list>
 </ion-content>

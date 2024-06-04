@@ -1,7 +1,7 @@
 <ion-header class="greenborderheader">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button (click)="goBack()" defaultHref="/contacts-page"></ion-back-button>
+      <ion-back-button  defaultHref="/contacts-page"></ion-back-button>
     </ion-buttons>
     <ion-title  >
       <ion-text *ngIf="contactName !== '(Unknown)'">{{ (contactName | titlecase)  }}</ion-text><ion-spinner *ngIf="contactName === '(Unknown)' || contactName === '' || contactName === 'Unknown' "  name="bubbles" ></ion-spinner>

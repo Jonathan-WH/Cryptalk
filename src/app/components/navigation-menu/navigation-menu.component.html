@@ -1,58 +1,22 @@
-<!-- <nav class="navigation-menu">
-    <ul class="menu">
-      <li class="menu-item">
-        <a routerLink="/home-connected">
-          <fa-icon [icon]="['fas', 'home']"></fa-icon>
-          <span>Home</span>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a routerLink="/contacts-page">
-          <fa-icon [icon]="['fas', 'address-book']"></fa-icon>
-          <span>Contacts</span>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a routerLink="/talks-page">
-            <fa-icon [icon]="['fas', 'comments']"></fa-icon>
-            <span>Talks</span>
-          </a>
-      </li>
-      <li class="menu-item">
-        <a routerLink="/wallet-page">
-          <fa-icon [icon]="['fas', 'wallet']"></fa-icon>
-          <span>Wallet</span>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a routerLink="/settings-page">
-            <fa-icon [icon]="['fas', 'cog']"></fa-icon>
-            <span>Settings</span>
-          </a>
-      </li>
-    </ul>
-  </nav> -->
-
-
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button routerLink="/home-connected">
-        <ion-icon src="../../../assets/SVG/home.svg"></ion-icon>
-        <ion-label>Home</ion-label>
-      </ion-tab-button>
-      <ion-tab-button routerLink="/contacts-page">
-        <ion-icon src="../../../assets/SVG/contact.svg"></ion-icon>
-        <ion-label>Contact</ion-label>
-      </ion-tab-button>
-      <ion-tab-button routerLink="/talks-page">
-        <ion-icon src="../../../assets/SVG/chat.svg"></ion-icon>
-        <ion-label>Chats</ion-label>
-      </ion-tab-button>
-      <ion-tab-button routerLink="/wallet-page">
-        <ion-icon src="../../../assets/SVG/wallet.svg"></ion-icon>
-        <ion-label>Wallet</ion-label>
-      </ion-tab-button>
-      <ion-tab-button routerLink="/settings-page">
-        <ion-icon src="../../../assets/SVG/settings2.svg"></ion-icon>
-        <ion-label>Settings</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
+<ion-tab-bar slot="bottom" class="nav-tab-bar">
+  <ion-tab-button [ngClass]="{ 'active-tab': (currentRoute$ | async) === '/home-connected' }" (click)="navigateTo('/home-connected')">
+    <ion-icon src="/assets/SVG/home.svg"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+  <ion-tab-button [ngClass]="{ 'active-tab': (currentRoute$ | async) === '/contacts-page' }" (click)="navigateTo('/contacts-page')">
+    <ion-icon src="/assets/SVG/contact.svg"></ion-icon>
+    <ion-label>Contact</ion-label>
+  </ion-tab-button>
+  <ion-tab-button [ngClass]="{ 'active-tab': (currentRoute$ | async) === '/talks-page' }" (click)="navigateTo('/talks-page')">
+    <ion-icon src="/assets/SVG/chat.svg"></ion-icon>
+    <ion-label>Chats</ion-label>
+  </ion-tab-button>
+  <ion-tab-button [ngClass]="{ 'active-tab': (currentRoute$ | async) === '/wallet-page' }" (click)="navigateTo('/wallet-page')">
+    <ion-icon src="/assets/SVG/wallet.svg"></ion-icon>
+    <ion-label>Wallet</ion-label>
+  </ion-tab-button>
+  <ion-tab-button [ngClass]="{ 'active-tab': (currentRoute$ | async) === '/settings-page' }" (click)="navigateTo('/settings-page')">
+    <ion-icon src="/assets/SVG/settings2.svg"></ion-icon>
+    <ion-label>Settings</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>

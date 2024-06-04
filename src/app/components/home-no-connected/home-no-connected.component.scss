@@ -38,19 +38,21 @@
     text-shadow: 0 0 10px #00ff00;
   }
 
-   /* global.css */
- ::ng-deep .custom-alert .alert-wrapper, ::ng-deep .custom-alertDouble .alert-wrapper{
-  border: 1px solid #00ff00;
-  border-radius: 5px;
-}
-
-::ng-deep .custom-alert .alert-button, ::ng-deep .custom-alertDouble .alert-button {
-  border: 1px solid #00ff00;
-  color: #00ff00 !important;
-}
-
-::ng-deep .custom-alertDouble .alert-button:last-child {
-  border: 1px solid #00ff00;
-  color: #ff0000 !important;
-}
+  /* global.css */
+  ::ng-deep .custom-alert .alert-wrapper, ::ng-deep .custom-alertDouble .alert-wrapper{
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+  }
+  
+  ::ng-deep .custom-alert .alert-button, ::ng-deep .custom-alertDouble .alert-button {
+    border: 1px solid #00ff00;
+    border-width: 1px 0px 0px 0px;
+    color: #00ff00 !important;
+  }
+  
+  ::ng-deep .custom-alertDouble .alert-button:last-child {
+    border: 1px solid #00ff00;
+    border-width: 1px 0px 0px 1px;
+    color: #ff0000 !important;
+  }
   

@@ -2,77 +2,84 @@
   <ion-accordion-group #waitingAccordion>
     <ion-accordion value="waitingConversations">
       <ion-item slot="header">
-        <ion-label class="waiting-list">Conversations en attente <ion-icon class="bell" *ngIf="((waitingConversations$ | async)!.length) > 0" src="../../../assets/SVG/chat.svg"></ion-icon> <ion-text *ngIf="((waitingConversations$ | async)!.length) !== 0" class="notif">{{ (waitingConversations$ | async)?.length }}</ion-text>  </ion-label>
+        <ion-label class="waiting-list">Conversations en attente <ion-icon class="bell"
+            *ngIf="((waitingConversations$ | async)!.length) > 0" src="../../../assets/SVG/chat.svg"></ion-icon>
+          <ion-text *ngIf="((waitingConversations$ | async)!.length) !== 0" class="notif">{{ (waitingConversations$ |
+            async)?.length }}</ion-text> </ion-label>
       </ion-item>
+
       <ion-list slot="content">
-        <ion-item *ngFor="let conversation of waitingConversations$ | async" class="message-list">
-          <ion-avatar slot="start">
-            <ion-icon class="avatar-icon" src="../../../assets/SVG/ninja.svg" alt="Avatar"></ion-icon>
-          </ion-avatar>
-          <ion-label><ion-grid>
-              <ion-row>
 
-                <ion-col size="5">
-                  <h2>{{ conversation.peerName | titlecase }}</h2>
-                  <p>{{ conversation.lastMessage | truncateWords: 3:15 }}</p>
-                </ion-col>
-                <ion-col size="5" class="date-column">
-                  <p class="date-time">{{ conversation.lastMessageDate | date: 'd MMMM yyyy HH:mm' }}</p>
-                </ion-col>
-
-                <ion-col size="2">
-                  <ion-button fill="outline" (click)="showAcceptDialog(conversation.address)">
-                    <ion-icon class="green" src="../../../assets/SVG/valid.svg"></ion-icon>
-                    <ion-icon class="red" src="../../../assets/SVG/xmark.svg"></ion-icon>
-                  </ion-button>
-                </ion-col>
-
-
-
-              </ion-row>
-
-            </ion-grid>
-          </ion-label>
-
-
-
-        </ion-item>
+        <ion-list slot="content">
+          <ng-container *ngIf="waitingConversations$ | async as conversations">
+            <ion-item *ngFor="let conversation of (conversations |  recentFirst:'lastMessageDate')"
+              class="message-list">
+              <ion-avatar slot="start">
+                <ion-icon class="avatar-icon" src="../../../assets/SVG/ninja.svg" alt="Avatar"></ion-icon>
+              </ion-avatar>
+              <ion-label><ion-grid>
+                  <ion-row>
+                    <ion-col size="5">
+                      <h2>{{ conversation.peerName | titlecase }}</h2>
+                      <p>{{ conversation.lastMessage | truncateWords: 3:15 }}</p>
+                    </ion-col>
+                    <ion-col size="5" class="date-column">
+                      <p class="date-time">{{ conversation.lastMessageDate | date: 'd MMMM yyyy HH:mm' }}</p>
+                    </ion-col>
+                    <ion-col size="2">
+                      <ion-button fill="outline" (click)="showAcceptDialog(conversation.address)">
+                        <ion-icon class="green" src="../../../assets/SVG/valid.svg"></ion-icon>
+                        <ion-icon class="red" src="../../../assets/SVG/xmark.svg"></ion-icon>
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-label>
+            </ion-item>
+          </ng-container>
+        </ion-list>
       </ion-list>
     </ion-accordion>
   </ion-accordion-group>
 
-  <ion-list>
-    <ion-list-header class="divider-talks">
-      <ion-title>Conversations</ion-title>
-    </ion-list-header>
-    <ion-item-sliding #slindingItem *ngFor="let conversation of acceptedConversations$ | async">
-      <ion-item [ngClass]="{'disabled-item': conversation.peerName === 'Unknown'}" (click)="onItemClick(conversation)">
-        <ion-avatar slot="start">
-          <ion-icon class="avatar-icon" src="../../../assets/SVG/ninja.svg" alt="Avatar"></ion-icon>
-        </ion-avatar>
-        <ion-label>
-          <ion-grid>
-            <ion-row>
-              <ion-col size="8">
-                <h2>{{ conversation.peerName | titlecase }}</h2>
-                <p>{{ conversation.lastMessage | truncateWords: 3:15 }}</p>
-              </ion-col>
-              <ion-col size="4" class="date-column">
-                <p class="date-time">{{ conversation.lastMessageDate | date: 'd MMMM yyyy HH:mm' }}</p>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="deleteConversation(conversation, $event, slindingItem )">
-          <ion-icon src="../../../assets/SVG/trashcan.svg"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
 
-  <div class="loader" *ngIf="(acceptedConversations$ | async)?.length === 0 && (waitingConversations$ | async)?.length === 0">
+  <ng-container *ngIf="acceptedConversations$ | async as conversationsA">
+    <ion-list>
+      <ion-list-header class="divider-talks">
+        <ion-title>Conversations</ion-title>
+      </ion-list-header>
+      <ion-item-sliding #slindingItem *ngFor="let conversation of (conversationsA |recentFirst:'lastMessageDate' ) ">
+        <ion-item [ngClass]="{'disabled-item': conversation.peerName === 'Unknown'}"
+          (click)="onItemClick(conversation)">
+          <ion-avatar slot="start">
+            <ion-icon class="avatar-icon" src="../../../assets/SVG/ninja.svg" alt="Avatar"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="8">
+                  <h2>{{ conversation.peerName | titlecase }}</h2>
+                  <p>{{ conversation.lastMessage | truncateWords: 3:15 }}</p>
+                </ion-col>
+                <ion-col size="4" class="date-column">
+                  <p class="date-time">{{ conversation.lastMessageDate | date: 'd MMMM yyyy HH:mm' }}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteConversation(conversation, $event, slindingItem )">
+            <ion-icon src="../../../assets/SVG/trashcan.svg"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ng-container>
+
+
+  <div class="loader"
+    *ngIf="(acceptedConversations$ | async)?.length === 0 && (waitingConversations$ | async)?.length === 0">
     <ion-spinner name="dots"></ion-spinner>
   </div>
 </ion-content>
