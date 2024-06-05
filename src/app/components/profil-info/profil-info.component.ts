@@ -16,6 +16,7 @@ export class ProfilInfoComponent  implements OnInit {
   showMnemonic: boolean = false;
   mnemonicPhrase: string = '';
   mnemonicPhraseMasked: string = '';
+  walletAddress: string = '';
 
   constructor(
     private router: Router,
@@ -25,6 +26,7 @@ export class ProfilInfoComponent  implements OnInit {
 
   ngOnInit() {
     this.mnemonicPhrase = this.walletService.getMnemonicPhrase() || '';
+    this.walletAddress = this.walletService.getAddress() || ''; // Add null check
     this.mnemonicPhraseMasked = this.mnemonicPhrase.split(' ').map(word => '*'.repeat(word.length)).join(' ');
     this.cd.detectChanges(); // Ensure change detection runs after async operation
   }

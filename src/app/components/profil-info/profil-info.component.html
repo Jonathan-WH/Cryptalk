@@ -3,21 +3,22 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/settings-page"></ion-back-button>
     </ion-buttons>
-    <ion-title>Profil info</ion-title>
+    <ion-title>Profil Info</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-card>
     <ion-card-header>
-      <ion-card-title><ion-icon class="warning" src="../../../assets/SVG/warning.svg"></ion-icon> -- Important --
-        <ion-icon class="warning" src="../../../assets/SVG/warning.svg"></ion-icon></ion-card-title>
+      <ion-card-title><ion-icon src="../../../assets/SVG/key.svg"></ion-icon>Recovery pass phrase
+      </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>This is your unique mnemonic phrase<span class="span-danger">(Aka your recovery pass phrase)</span>. If you
+      <p>This is your unique mnemonic phrase. If you
         lose it, you will not be able to recover your account. Please store it safely.</p>
       <ion-item>
-        <ion-label position="stacked">Mnemonic Phrase:</ion-label>
+        <ion-label class="titre-info" position="stacked">Mnemonic Phrase: </ion-label>
+
         <ng-container *ngIf="showMnemonic; else hideMnemonic">
           <ion-textarea readonly>{{ mnemonicPhrase }}</ion-textarea>
         </ng-container>
@@ -25,7 +26,7 @@
           <ion-textarea readonly>{{ mnemonicPhraseMasked }}</ion-textarea>
         </ng-template>
         <ion-button fill="clear" slot="end" (click)="toggleShowMnemonic()">
-          <ion-icon [src]="showMnemonic ? '/assets/SVG/eye-off.svg' : '/assets/SVG/eye.svg'"></ion-icon>
+          <ion-icon class="warning" [src]="showMnemonic ? '/assets/SVG/eye-off.svg' : '/assets/SVG/eye.svg'"></ion-icon>
         </ion-button>
       </ion-item>
     </ion-card-content>
@@ -39,9 +40,9 @@
     <ion-card-content>
       <p>Here is you address of contact:</p>
       <ion-item>
-        <ion-label position="stacked">Address of contact:</ion-label>
+        <ion-label class="titre-info" position="stacked">Address of contact:</ion-label>
         <ng-container>
-          <ion-textarea>XXXXXXXXXXXX</ion-textarea>
+          <ion-textarea> {{ walletAddress }}</ion-textarea>
         </ng-container>
 
       </ion-item>

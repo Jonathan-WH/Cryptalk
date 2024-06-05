@@ -54,5 +54,9 @@ export class WalletManagementService {
   getMnemonicPhrase(): string | null {
     return localStorage.getItem('walletMnemonic') || '';
   }
+
+  getAddress(): string | null {
+    return localStorage.getItem('walletAddress');
+  }
 }
 

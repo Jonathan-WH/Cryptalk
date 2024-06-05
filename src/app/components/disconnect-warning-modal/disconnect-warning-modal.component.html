@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button class="cancel-button" (click)="dismiss(false)">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title><ion-icon src="../../../assets/SVG/warning.svg"></ion-icon> Warning</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Disconnecting will erase all local data including contacts, blocked users, and deleted conversations settings.
+      </p>
+<br>
+      <p>
+        Conversations will remain encrypted on the blockchain and can only be accessed again with your recovery passphrase.
+      </p>
+<br>
+      <p>
+        Without this passphrase, your account and data will be lost permanently.
+      </p>
+      <ion-button class="disconnect-button" expand="full" (click)="dismiss(true)">Disconnect</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

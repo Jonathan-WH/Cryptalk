@@ -48,7 +48,12 @@ ion-textarea {
 ion-button {
   --padding-start: 10px;
   --padding-end: 10px;
-  --color: #000;
+  
+}
+
+ion-button.eye{
+  position: relative;
+  right: -20px;
 }
 
 ion-button.understand-button {
@@ -67,4 +72,9 @@ ion-button.understand-button {
     border: solid;
     border-radius: 20px;
 
+  }
+
+  ion-label.title-new {
+    --color: #616161;
+    font-size: 18px;
   }

@@ -14,7 +14,7 @@
     </ion-list>
 
     <ion-list [inset]="true">
-      <ion-item>
+      <ion-item (click)="disconnect()">
         <ion-label color="danger">Disconnect</ion-label>
         <ion-icon color="danger" slot="end" src="../../../assets/SVG/leave.svg"></ion-icon>
       </ion-item>

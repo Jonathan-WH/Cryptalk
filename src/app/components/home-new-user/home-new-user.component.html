@@ -1,25 +1,19 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>New Account</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="ion-padding">
   <ion-card>
     <ion-card-header>
-      <ion-card-title><ion-icon src="../../../assets/SVG/warning.svg"></ion-icon> -- Important -- <ion-icon src="../../../assets/SVG/warning.svg"></ion-icon></ion-card-title>
+      <ion-card-title><ion-icon src="../../../assets/SVG/warning.svg"></ion-icon> - Important - <ion-icon src="../../../assets/SVG/warning.svg"></ion-icon></ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <p>This is your unique mnemonic phrase. If you lose it, you will not be able to recover your account. Please store it safely.</p>
       <ion-item>
-        <ion-label position="stacked">Mnemonic Phrase:</ion-label>
+        <ion-label class="title-new" position="stacked">Mnemonic Phrase:</ion-label>
         <ng-container *ngIf="showMnemonic; else hideMnemonic">
           <ion-textarea readonly>{{ mnemonicPhrase }}</ion-textarea>
         </ng-container>
         <ng-template #hideMnemonic>
           <ion-textarea readonly>{{ mnemonicPhraseMasked }}</ion-textarea>
         </ng-template>
-        <ion-button fill="clear" slot="end" (click)="toggleShowMnemonic()">
+        <ion-button class="eye" fill="clear" slot="end" (click)="toggleShowMnemonic()">
           <ion-icon [src]="showMnemonic ? '/assets/SVG/eye-off.svg' : '/assets/SVG/eye.svg'"></ion-icon>
         </ion-button>
       </ion-item>

@@ -1,0 +1,57 @@
+::ng-deep ion-header, ::ng-deep ion-card-header {
+    border-bottom: solid 2px #00ff00!important;
+
+}
+
+ion-card {
+border: #00ff00 1px solid;
+}
+
+ion-card-title {
+    text-align: center;
+}
+
+ion-card-content p:first-child {
+    margin-top: 20px;
+}
+
+::ng-deep ion-button.button-clear{
+    --color: #00ff00!important;
+    --border-color: #00ff00; 
+}
+
+::ng-deep ion-button.disconnect-button {
+
+    width: 80%;
+    margin: 30px auto 0px auto ;
+  --background: #1c1c1d;
+  /* Couleur de fond par défaut */
+  --background-hover: #1c1c1d;
+  /* Couleur de fond au survol */
+  --background-activated: #1c1c1d;
+  /* Couleur de fond lors de l'activation */
+  --background-focused: #1c1c1d;
+  /* Couleur de fond lorsque le bouton est focus */
+
+  --color: #ff0000;
+  /* Couleur du texte par défaut */
+  --color-hover: #ff0000;
+  /* Couleur du texte au survol */
+  --color-activated: #ff0000;
+  /* Couleur du texte lors de l'activation */
+  --color-focused: #ff0000;
+  /* Couleur du texte lorsque le bouton est focus */
+
+  --border-radius: 10px!important;
+  /* Rayon de la bordure */
+  --border-color: #ff0000!important;
+  /* Couleur de la bordure par défaut */
+  --border-style: solid!important;
+  /* Style de la bordure */
+  --border-width: 3px 1px 3px 1px!important;
+  /* Largeur de la bordure */
+
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+}
+
