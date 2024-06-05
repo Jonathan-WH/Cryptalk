@@ -1,7 +1,7 @@
 
 <ion-content>
   <ion-list-header class="divider-top divider">
-    <ion-title>Top 5</ion-title>
+    <ion-title>Top 5 Crypto</ion-title>
   </ion-list-header>
   <ion-list *ngIf="(marketData$ | async)?.length; else loader">
     <ion-item *ngFor="let crypto of marketData$ | async">

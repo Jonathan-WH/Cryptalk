@@ -5,23 +5,29 @@ import { IonicModule, AlertController } from '@ionic/angular';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChatService } from '../../services/chat.service';
+import { ToastController } from '@ionic/angular/standalone';
+
 
 @Component({
   selector: 'app-contact-details',
   templateUrl: './contact-details.component.html',
   styleUrls: ['./contact-details.component.scss'],
   imports: [IonicModule, CommonModule, FormsModule],
-  standalone: true
+  standalone: true,
+  providers: [TitleCasePipe]
 })
 export class ContactDetailsComponent implements OnInit {
   contact: ContactInterface | undefined;
+  isBlocked = false;
 
   constructor(
     private contactService: ContactService,
     private route: ActivatedRoute,
     private router: Router,
     private alertController: AlertController,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private toastController: ToastController,
+    private titleCasePipe: TitleCasePipe
   ) { }
 
   ngOnInit() {
@@ -38,7 +44,7 @@ export class ContactDetailsComponent implements OnInit {
         header: 'Success',
         message: 'Contact updated successfully.',
         buttons: ['OK'],
-        cssClass: 'custom-alert' 
+        cssClass: 'custom-alert'
       });
       await alert.present();
       this.router.navigate(['/contacts-page']);
@@ -71,11 +77,72 @@ export class ContactDetailsComponent implements OnInit {
             }
           }
         ],
-        cssClass: 'custom-alertDouble' 
+        cssClass: 'custom-alertDouble'
       });
       await alert.present();
     }
   }
-}
 
+  async blockContact() {
+    if (this.contact) {
+      const alert = await this.alertController.create({
+        header: 'Confirm block contact',
+        message: `Are you sure you want to block ${this.titleCasePipe.transform(this.contact!.name)}?`,
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel'
+          },
+          {
+            text: 'Block',
+            handler: async () => {
+              this.contactService.blockContact(this.contact!.address);
+              this.isBlocked = true;
+              const toast = await this.toastController.create({
+                message: `${this.titleCasePipe.transform(this.contact!.name)} has been blocked.`,
+                duration: 2000,
+                color: 'success',
+                position: 'top'
+              });
+              await toast.present();
+            }
+          }
+        ],
+        cssClass: 'custom-alertDouble'
+      });
+      await alert.present();
+    }
+  }
+
+  async unblockContact() {
+    if (this.contact) {
+      const alert = await this.alertController.create({
+        header: 'Confirm unblock contact',
+        message: `Are you sure you want to unblock ${this.titleCasePipe.transform(this.contact!.name)}?`,
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel'
+          },
+          {
+            text: 'Unblock',
+            handler: async () => {
+              this.contactService.unblockContact(this.contact!.address);
+              this.isBlocked = false;
+              const toast = await this.toastController.create({
+                message: `${this.titleCasePipe.transform(this.contact!.name)} has been unblocked.`,
+                duration: 2000,
+                color: 'success',
+                position: 'top'
+              });
+              await toast.present();
+            }
+          }
+        ],
+        cssClass: 'custom-alertDouble'
+      });
+      await alert.present();
+    }
+  }
   
+}

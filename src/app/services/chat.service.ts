@@ -26,12 +26,18 @@ export class ChatService {
     private etherCreateAdressService: EtherCreateAdressService,
     private contactService: ContactService
   ) {
-    this.combinedConversations$ = combineLatest([this.conversationsSubject.asObservable(), this.contactService.contacts$]).pipe(
-      map(([conversations, contacts]) => {
-        return conversations.map(convo => ({
-          ...convo,
-          peerName: contacts.find(c => c.address === convo.address)?.name || 'Unknown'
-        }));
+    this.combinedConversations$ = combineLatest([
+      this.conversationsSubject.asObservable(),
+      this.contactService.contacts$,
+      this.contactService.blockedContacts$
+    ]).pipe(
+      map(([conversations, contacts, blockedContacts]) => {
+        return conversations
+          .filter(convo => !blockedContacts.includes(convo.address))
+          .map(convo => ({
+            ...convo,
+            peerName: contacts.find(c => c.address === convo.address)?.name || 'Unknown'
+          }));
       })
     );
   }

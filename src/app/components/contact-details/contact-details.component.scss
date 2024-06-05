@@ -1,57 +1,103 @@
 .greenborderheader {
-    border-bottom: 2px solid #00ff00;
-  }
+  border-bottom: 2px solid #00ff00;
+}
 
-  .greenborder {
-    border-bottom: 1px solid #00ff0080;
-  }
+.greenborder {
+  border-bottom: 1px solid #00ff0080;
+}
 
-  ion-icon {
-    font-size: 32px;
-    position: relative;
-    top: 10px;
-  }
+ion-icon {
+  font-size: 32px;
+  position: relative;
+  top: 10px;
+}
 
-  ion-back-button {
-    color: #00ff00;
-  }
+ion-back-button {
+  color: #00ff00;
+}
 
-  ion-button.update-contact {
-    margin: 30px 10px 30px 10px;
-    color: #00ff00;
+ion-button.update-contact {
+  margin: 30px 10px 30px 10px;
+  color: #00ff00;
 
-    --background: #000000; /* Couleur de fond par défaut */
-    --background-hover: #000000; /* Couleur de fond au survol */
-    --background-activated: #000000; /* Couleur de fond lors de l'activation */
-    --background-focused: #000000; /* Couleur de fond lorsque le bouton est focus */
-  
-    --color: #00ff00; /* Couleur du texte par défaut */
-    --color-hover: #00ff00; /* Couleur du texte au survol */
-    --color-activated: #00ff00; /* Couleur du texte lors de l'activation */
-    --color-focused: #00ff00; /* Couleur du texte lorsque le bouton est focus */
-  
-    --border-radius: 10px; /* Rayon de la bordure */
-    --border-color: #00ff00; /* Couleur de la bordure par défaut */
-    --border-style: solid; /* Style de la bordure */
-    --border-width: 2px; /* Largeur de la bordure */
-  
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-   
+  --background: #000000;
+  /* Couleur de fond par défaut */
+  --background-hover: #000000;
+  /* Couleur de fond au survol */
+  --background-activated: #000000;
+  /* Couleur de fond lors de l'activation */
+  --background-focused: #000000;
+  /* Couleur de fond lorsque le bouton est focus */
 
-  }
+  --color: #00ff00;
+  /* Couleur du texte par défaut */
+  --color-hover: #00ff00;
+  /* Couleur du texte au survol */
+  --color-activated: #00ff00;
+  /* Couleur du texte lors de l'activation */
+  --color-focused: #00ff00;
+  /* Couleur du texte lorsque le bouton est focus */
 
-  ion-button.delete-contact {
-    margin-bottom: 30px;
-  }
+  --border-radius: 10px;
+  /* Rayon de la bordure */
+  --border-color: #00ff00;
+  /* Couleur de la bordure par défaut */
+  --border-style: solid;
+  /* Style de la bordure */
+  --border-width: 2px;
+  /* Largeur de la bordure */
 
- /* global.css */
- ::ng-deep .custom-alert .alert-wrapper, ::ng-deep .custom-alertDouble .alert-wrapper{
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+
+
+}
+
+ion-button.delete-contact {
+  margin-bottom: 30px;
+  margin: 30px 10px 30px 10px;
+  color: #00ff00;
+
+  --background: #000000;
+  /* Couleur de fond par défaut */
+  --background-hover: #000000;
+  /* Couleur de fond au survol */
+  --background-activated: #000000;
+  /* Couleur de fond lors de l'activation */
+  --background-focused: #000000;
+  /* Couleur de fond lorsque le bouton est focus */
+
+  --color: #00ff00;
+  /* Couleur du texte par défaut */
+  --color-hover: #00ff00;
+  /* Couleur du texte au survol */
+  --color-activated: #00ff00;
+  /* Couleur du texte lors de l'activation */
+  --color-focused: #00ff00;
+  /* Couleur du texte lorsque le bouton est focus */
+
+  --border-radius: 10px;
+  /* Rayon de la bordure */
+  --border-color: #00ff00;
+  /* Couleur de la bordure par défaut */
+  --border-style: solid;
+  /* Style de la bordure */
+  --border-width: 2px;
+  /* Largeur de la bordure */
+
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+}
+
+/* global.css */
+::ng-deep .custom-alert .alert-wrapper,
+::ng-deep .custom-alertDouble .alert-wrapper {
   border: 1px solid #00ff00;
   border-radius: 5px;
 }
 
-::ng-deep .custom-alert .alert-button, ::ng-deep .custom-alertDouble .alert-button {
+::ng-deep .custom-alert .alert-button,
+::ng-deep .custom-alertDouble .alert-button {
   border: 1px solid #00ff00;
   border-width: 1px 0px 0px 0px;
   color: #00ff00 !important;
@@ -63,3 +109,82 @@
   color: #ff0000 !important;
 }
 
+::ng-deep .custom-alertDouble .alert-button:first-child {
+  border: 1px solid #00ff00;
+  border-width: 1px 0px 0px 0px;
+  color: #00ff00 !important;
+}
+
+ion-button.block-contact {
+  margin: 30px 10px 30px 10px;
+  color: #00ff00;
+
+  --background: #000000;
+  /* Couleur de fond par défaut */
+  --background-hover: #000000;
+  /* Couleur de fond au survol */
+  --background-activated: #000000;
+  /* Couleur de fond lors de l'activation */
+  --background-focused: #000000;
+  /* Couleur de fond lorsque le bouton est focus */
+
+  --color: #00ff00;
+  /* Couleur du texte par défaut */
+  --color-hover: #00ff00;
+  /* Couleur du texte au survol */
+  --color-activated: #00ff00;
+  /* Couleur du texte lors de l'activation */
+  --color-focused: #00ff00;
+  /* Couleur du texte lorsque le bouton est focus */
+
+  --border-radius: 10px;
+  /* Rayon de la bordure */
+  --border-color: #00ff00;
+  /* Couleur de la bordure par défaut */
+  --border-style: solid;
+  /* Style de la bordure */
+  --border-width: 2px;
+  /* Largeur de la bordure */
+
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+
+
+}
+
+ion-button.unblock-contact {
+  margin: 30px 10px 30px 10px;
+  color: #00ff00;
+
+  --background: #000000;
+  /* Couleur de fond par défaut */
+  --background-hover: #000000;
+  /* Couleur de fond au survol */
+  --background-activated: #000000;
+  /* Couleur de fond lors de l'activation */
+  --background-focused: #000000;
+  /* Couleur de fond lorsque le bouton est focus */
+
+  --color: #00ff00;
+  /* Couleur du texte par défaut */
+  --color-hover: #00ff00;
+  /* Couleur du texte au survol */
+  --color-activated: #00ff00;
+  /* Couleur du texte lors de l'activation */
+  --color-focused: #00ff00;
+  /* Couleur du texte lorsque le bouton est focus */
+
+  --border-radius: 10px;
+  /* Rayon de la bordure */
+  --border-color: #00ff00;
+  /* Couleur de la bordure par défaut */
+  --border-style: solid;
+  /* Style de la bordure */
+  --border-width: 2px;
+  /* Largeur de la bordure */
+
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+
+
+}
