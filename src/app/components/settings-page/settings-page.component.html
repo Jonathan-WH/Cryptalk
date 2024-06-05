@@ -3,7 +3,24 @@
       <ion-title>Settings</ion-title>
     </ion-toolbar>
   </ion-header>
-<ion-content>
 
-</ion-content>
+  <ion-content>
+
+    <ion-list [inset]="true">
+      <ion-item (click)="navigateTo()">
+        <ion-label><ion-icon class="circle-user" src="../../../assets/SVG/circle-user.svg"></ion-icon>Profil Info</ion-label>
+        <ion-icon slot="end" src="../../../assets/SVG/chevron-right.svg"></ion-icon>
+      </ion-item>
+    </ion-list>
+
+    <ion-list [inset]="true">
+      <ion-item>
+        <ion-label color="danger">Disconnect</ion-label>
+        <ion-icon color="danger" slot="end" src="../../../assets/SVG/leave.svg"></ion-icon>
+      </ion-item>
+      
+    </ion-list>
+
+
+  </ion-content>
 

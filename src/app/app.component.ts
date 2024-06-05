@@ -25,7 +25,8 @@ export class AppComponent {
         !event.url.includes('home-no-connected') && 
         !event.url.includes('connect-with-existing-account') && 
         !event.url.includes('contact-details') &&
-        !event.url.includes('home-new-user') 
+        !event.url.includes('home-new-user') &&
+        !event.url.includes('profil-info') 
       }
     });
   }

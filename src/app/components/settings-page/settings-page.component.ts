@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationMenuComponent } from "../navigation-menu/navigation-menu.component";
 import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-settings-page',
@@ -10,5 +11,12 @@ import { IonicModule } from '@ionic/angular';
     imports: [NavigationMenuComponent, IonicModule]
 })
 export class SettingsPageComponent {
+
+    constructor(
+        private router: Router) { }
+
+    navigateTo() {
+        this.router.navigate(['/profil-info']);
+    }
 
 }

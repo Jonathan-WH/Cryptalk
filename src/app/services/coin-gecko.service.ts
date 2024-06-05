@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CoinGeckoService {
-  private apiUrl = 'https://api.coingecko.com/api/v3'
+  private apiUrl = ''
   //'https://api.coingecko.com/api/v3';
 
   constructor(private http: HttpClient) { }

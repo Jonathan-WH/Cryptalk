@@ -11,6 +11,7 @@ import { TalkingPageComponent } from './components/talking-page/talking-page.com
 import { ContactAddComponent } from './components/contact-add/contact-add.component';
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 import { HomeNewUserComponent } from './components/home-new-user/home-new-user.component';
+import { ProfilInfoComponent } from './components/profil-info/profil-info.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home-no-connected', pathMatch: 'full' },
@@ -36,6 +37,8 @@ export const routes: Routes = [
     {path: 'home-new-user', component: HomeNewUserComponent, canActivate: [AuthGuard]},
 
     {path: 'contact-details', component: ContactDetailsComponent, canActivate: [AuthGuard]},
+
+    {path: 'profil-info', component: ProfilInfoComponent, canActivate: [AuthGuard]},
 
     { path: '**', redirectTo: '/home-no-connected'},
     // Ajoutez d'autres routes ici

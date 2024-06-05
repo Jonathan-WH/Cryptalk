@@ -7,9 +7,9 @@ import { environment } from '../../environment/environment'
   providedIn: 'root'
 })
 export class NewsService {
-  private apiUrl = 'https://newsapi.org/v2';
+  private apiUrl = '';
 
-  //
+  //https://newsapi.org/v2
   private apiKey = environment.NEWS_API_KEY;
 
   constructor(private http: HttpClient) { }
