@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../config';
+import { environment } from '../../environment/environment';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoinGeckoService {
-  private apiUrl = ''
+  private apiUrl = 'https://api.coingecko.com/api/v3'
   //'https://api.coingecko.com/api/v3';
 
   constructor(private http: HttpClient) { }

@@ -1,5 +1,7 @@
-export const environment = {
+import { environment } from "./src/environment/environment";
+
+export const config = {
   production: false,
-  coingeckoApiKey: 'CG-myGq3vzjM8vzPFnQ2ZcjQuLC',
-  newsApiKey: 'c8b89a80c3ec4f1a85b10f931112cb23'
+  coingeckoApiKey: environment.coingeckoApiKey,
+  NEWS_API_KEY: environment.NEWS_API_KEY
 };
