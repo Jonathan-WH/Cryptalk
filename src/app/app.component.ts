@@ -47,7 +47,7 @@ export class AppComponent {
     
     setTimeout(() => {
       this.updateNavigationVisibility(this.router.url);
-    }, 0);
+    }, 10);
   }
 
   private updateNavigationVisibility(url: string): void {
