@@ -11,7 +11,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+      - run: | 
+          touch src/environment/environment.prod.ts
+          echo "export const environment = {
+            production: true,
+            coingeckoApiKey: '${{ secrets.COINGECKOAPI }}',
+            NEWS_API_KEY: '${{ secrets.NEWSAPIKEY }}',
+            firebase: {
+              apiKey: '${{ secrets.FIREBAS_APIKEY }}',
+              authDomain: 'cryptalk-3db24.firebaseapp.com',
+              projectId: 'cryptalk-3db24',
+              storageBucket: 'cryptalk-3db24.appspot.com',
+              messagingSenderId: '1022113900826',
+              appId: '1:1022113900826:web:201b10ee0449e204ea64a3',
+              measurementId: 'G-RZPRQF989Y'
+            }
+          }" >> src/environment/environment.prod.ts
+          npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

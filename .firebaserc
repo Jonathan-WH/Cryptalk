@@ -1,4 +1,20 @@
 {
+  "targets": {
+    "cryptalk-3db24": {
+      "hosting": {
+        "cryptalk-3db24": [
+          "cryptalk-3db24"
+        ]
+      }
+    },
+    "cryptalk-2024": {
+      "hosting": {
+        "cryptalk-2024": [
+          "cryptalk-2024"
+        ]
+      }
+    }
+  },
   "projects": {
     "default": "cryptalk-3db24"
   }

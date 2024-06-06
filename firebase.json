@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "target": "cryptalk-3db24",
     "public": "dist/cryptalk/browser",
     "ignore": [
       "firebase.json",
