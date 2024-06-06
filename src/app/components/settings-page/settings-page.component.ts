@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationMenuComponent } from "../navigation-menu/navigation-menu.component";
 
-import {ModalController, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea } from '@ionic/angular/standalone';
+import {ModalController, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea, IonToggle } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { DisconnectWarningModalComponent } from '../disconnect-warning-modal/disconnect-warning-modal.component';
 
@@ -10,7 +10,9 @@ import { DisconnectWarningModalComponent } from '../disconnect-warning-modal/dis
   standalone: true,
   templateUrl: './settings-page.component.html',
   styleUrls: ['./settings-page.component.scss'],
-  imports: [NavigationMenuComponent, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea]
+  imports: [NavigationMenuComponent, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea, 
+  IonToggle
+  ]
 })
 export class SettingsPageComponent {
 
@@ -36,4 +38,7 @@ export class SettingsPageComponent {
 
     return await modal.present();
   }
+
+
+  
 }

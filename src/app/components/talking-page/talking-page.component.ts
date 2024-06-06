@@ -15,6 +15,7 @@ import { TimestampPipe } from '../../pipe/timestamp.pipe';
 import { IonInfiniteScroll, IonInfiniteScrollContent, IonFooter,NavController, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea } from '@ionic/angular/standalone';
 import { ContactInterface } from '../../services/contact.service';
 import { ContactService } from '../../services/contact.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-talking-page',
@@ -242,15 +243,18 @@ export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked
    
   }
 
-  navigateToInfoContact(address: string) {
-    this.contacts$.subscribe(contacts => {
-      const contact = contacts.find(c => c.address === address);
-      console.log('Contact:', this.contacts$);
-      if (contact) {
-        this.router.navigate(['/contact-details', { id: contact.id }]);
-      } else {
-        console.error('Contact not found');
-      }
-    });
+  
+
+async navigateToInfoContact(address: string) {
+  console.log('Navigating with address:', address);
+  const contacts = await firstValueFrom(this.contacts$);
+  const contact = contacts.find(c => c.address === address);
+  console.log('Contact:', contact);
+  if (contact) {
+    this.router.navigate(['/contact-details', { id: contact.id }]);
+  } else {
+    console.error('Contact not found');
   }
+}
+
 }

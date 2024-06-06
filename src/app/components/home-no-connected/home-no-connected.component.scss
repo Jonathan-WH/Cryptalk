@@ -28,9 +28,13 @@ body {
 }
 
 ion-button {
-  margin: 0px 10px 20px 10px;
+  margin: 0px 10px 40px 10px;
   color: #00ff00;
   --border-color: #00ff00;
+}
+
+ion-buton:last-child {
+  margin-bottom: 40px;
 }
 
 h1.title-app-page {

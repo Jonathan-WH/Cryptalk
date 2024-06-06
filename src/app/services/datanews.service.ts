@@ -7,7 +7,7 @@ import { environment } from '../../environment/environment.prod'
   providedIn: 'root'
 })
 export class NewsService {
-  private apiUrl = '';
+  private apiUrl = 'https://newsapi.org/v2';
 
   //https://newsapi.org/v2
   private apiKey = environment.NEWS_API_KEY;

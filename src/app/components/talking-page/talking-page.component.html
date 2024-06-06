@@ -8,8 +8,11 @@
   </ion-title>
   
     <ion-buttons slot="end" *ngIf="contactName === '(Unknown)'">
-      <ion-button (click)="navigateToInfoContact(contactAddress || '')"> Set Name
+      <ion-button *ngIf="contactAddress" [disabled]="!contactAddress" (click)="navigateToInfoContact(contactAddress)">
+        Set Name
       </ion-button>
+      
+      
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

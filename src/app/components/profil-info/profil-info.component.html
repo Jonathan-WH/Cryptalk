@@ -41,11 +41,12 @@
       <p>Here is you address of contact:</p>
       <ion-item>
         <ion-label class="titre-info" position="stacked">Address of contact:</ion-label>
-        <ng-container>
-          <ion-textarea> {{ walletAddress }}</ion-textarea>
-        </ng-container>
-
+        <ion-textarea readonly [value]="walletAddress"></ion-textarea>
+        <ion-button fill="clear" slot="end" (click)="copyTextToClipboard(walletAddress)">
+          <ion-icon class="copy-button" src="../../../assets/SVG/copy.svg" ></ion-icon>
+        </ion-button>
       </ion-item>
+      
     </ion-card-content>
   </ion-card>
 </ion-content>

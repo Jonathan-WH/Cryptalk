@@ -71,18 +71,6 @@
       "src": "assets/screenshots/mobile-3.jpg",
       "sizes": "518x922",
       "type": "image/jpeg"
-    },
-    {
-      "src": "assets/screenshots/tablet-1.jpg",
-      "sizes": "1270x800",
-      "type": "image/jpeg",
-      "form_factor": "wide"
-    },
-    {
-      "src": "assets/screenshots/tablet-2.jpg",
-      "sizes": "1270x800",
-      "type": "image/jpeg",
-      "form_factor": "wide"
     }
   ]
 }
