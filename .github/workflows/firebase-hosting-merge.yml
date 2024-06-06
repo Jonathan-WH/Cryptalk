@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: | 
+          mkdir -p src/environment
           touch src/environment/environment.prod.ts
           echo "export const environment = {
             production: true,
