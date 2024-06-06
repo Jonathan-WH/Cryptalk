@@ -26,7 +26,9 @@ export class AppComponent {
     private router: Router,
     @Inject(NotificationService) private notificationService: NotificationService) {
     this.router.events.subscribe(event => {
+      console.log('Event:', event);
       if (event instanceof NavigationEnd) {
+        console.log('NavigationEnd:', event);
         this.showNavigationMenu = 
         !event.url.includes('talking-page') && 
         !event.url.includes('add-contact') && 
