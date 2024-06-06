@@ -1,7 +1,7 @@
 import { enableProdMode, importProvidersFrom, isDevMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppComponent } from './app/app.component';
-import { environment } from '../src/environment/environment';
+import { environment } from '../src/environment/environment.prod';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';

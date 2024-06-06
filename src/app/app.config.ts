@@ -8,7 +8,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getMessaging, provideMessaging } from '@angular/fire/messaging';
 import { provideServiceWorker } from '@angular/service-worker';
-import { environment } from '../environment/environment';
+import { environment } from '../environment/environment.prod';
 
 export const appConfig: ApplicationConfig = {
   providers: [

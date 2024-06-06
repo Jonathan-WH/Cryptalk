@@ -1,6 +1,6 @@
 // src/app/services/notification.service.ts
 import { Injectable } from '@angular/core';
-import { environment } from '../../environment/environment';
+import { environment } from '../../environment/environment.prod';
 import { PushNotifications, Token, ActionPerformed } from '@capacitor/push-notifications';
 import { FirebaseMessaging } from '@capacitor-firebase/messaging';
 import { Platform } from '@ionic/angular/standalone';
