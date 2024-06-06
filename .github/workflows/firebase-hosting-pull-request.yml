@@ -14,6 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
        - run: | 
+          mkdir -p src/environment
           touch src/environment/environment.prod.ts
           echo "export const environment = {
             production: true,
@@ -28,7 +29,7 @@ jobs:
               appId: '1:1022113900826:web:201b10ee0449e204ea64a3',
               measurementId: 'G-RZPRQF989Y'
             }
-          }" >> src/environment/environment.prod.ts
+          }" > src/environment/environment.prod.ts
           npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
