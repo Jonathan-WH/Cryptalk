@@ -9,5 +9,6 @@ import 'zone.js';  // Included with Angular CLI.
  * APPLICATION IMPORTS
  */
 import { Buffer } from 'buffer';
-window.Buffer = Buffer;
+(window as any).Buffer = Buffer;
 // pour travailler avec les nombres infini
+

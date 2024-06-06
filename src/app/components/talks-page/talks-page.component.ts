@@ -4,7 +4,8 @@ import { WalletManagementService } from '../../services/wallet-management.servic
 import { ChatService } from '../../services/chat.service';
 import { ethers } from 'ethers';
 import { CommonModule } from '@angular/common';
-import { IonicModule, AlertController, IonItemSliding } from '@ionic/angular';
+
+import { AlertController, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonItemOptions, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea, IonAccordion, IonAccordionGroup, IonItemSliding, IonItemOption } from '@ionic/angular/standalone';
 import { DecodedMessage } from '@xmtp/xmtp-js';
 import { Router } from '@angular/router';
 import { TimestampPipe } from '../../pipe/timestamp.pipe';
@@ -17,7 +18,7 @@ import { RecentFirstPipe } from '../../pipe/recent-first.pipe';
   selector: 'app-talks-page',
   templateUrl: './talks-page.component.html',
   styleUrls: ['./talks-page.component.scss'],
-  imports: [NavigationMenuComponent, CommonModule, IonicModule, TimestampPipe, TruncateWordsPipe, RecentFirstPipe],
+  imports: [NavigationMenuComponent, CommonModule,  TimestampPipe, TruncateWordsPipe, RecentFirstPipe, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea, IonAccordion, IonAccordionGroup, IonItemSliding, IonItemOption, IonItemOptions],
   standalone: true
 })
 export class TalksPageComponent implements OnInit, OnDestroy {

@@ -5,12 +5,12 @@ import { XmtpCreateClientService } from '../../services/xmtp-create-client.servi
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ethers } from 'ethers';
-import { IonicModule } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-connect-with-existing-account',
   standalone: true,
-  imports: [FormsModule, CommonModule, IonicModule],
+  imports: [FormsModule, CommonModule, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText],
   templateUrl: './connect-with-existing-account.component.html',
   styleUrl: './connect-with-existing-account.component.scss'
 })

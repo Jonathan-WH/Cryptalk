@@ -7,12 +7,12 @@ import { NavigationMenuComponent } from "../navigation-menu/navigation-menu.comp
 import { ethers } from 'ethers';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { InfiniteScrollCustomEvent, IonicModule } from '@ionic/angular';
+import { InfiniteScrollCustomEvent,  } from '@ionic/angular/standalone';
 import { DecodedMessage } from '@xmtp/xmtp-js';
 import { ToastService } from '../../services/toast.service';
 import { Subscription, Observable } from 'rxjs';
 import { TimestampPipe } from '../../pipe/timestamp.pipe';
-import { NavController } from '@ionic/angular';
+import { IonInfiniteScroll, IonInfiniteScrollContent, IonFooter,NavController, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea } from '@ionic/angular/standalone';
 import { ContactInterface } from '../../services/contact.service';
 import { ContactService } from '../../services/contact.service';
 
@@ -20,7 +20,7 @@ import { ContactService } from '../../services/contact.service';
   selector: 'app-talking-page',
   templateUrl: './talking-page.component.html',
   styleUrls: ['./talking-page.component.scss'],
-  imports: [NavigationMenuComponent, FormsModule, CommonModule, IonicModule, TimestampPipe],
+  imports: [NavigationMenuComponent, FormsModule, CommonModule, TimestampPipe ,IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea, IonInfiniteScroll, IonInfiniteScrollContent, IonFooter],
   standalone: true
 })
 export class TalkingPageComponent implements OnInit, OnDestroy, AfterViewChecked {

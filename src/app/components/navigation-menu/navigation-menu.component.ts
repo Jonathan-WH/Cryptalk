@@ -3,7 +3,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHome, faAddressBook, faCog, faWallet, faComments } from '@fortawesome/free-solid-svg-icons';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { Router, NavigationEnd, Event } from '@angular/router'; 
-import { IonicModule } from '@ionic/angular';
+
+import { IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea, IonTabBar, IonTabButton } from '@ionic/angular/standalone';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-navigation-menu',
   standalone: true,
-  imports: [FontAwesomeModule, IonicModule, CommonModule],
+  imports: [FontAwesomeModule, CommonModule,  IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea, IonTabBar, IonTabButton],
   templateUrl: './navigation-menu.component.html',
   styleUrls: ['./navigation-menu.component.scss']
 })

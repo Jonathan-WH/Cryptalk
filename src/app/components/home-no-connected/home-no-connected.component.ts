@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { WalletManagementService } from '../../services/wallet-management.service';
 import { Router } from '@angular/router';
 import { IsAuthService } from '../../services/is-auth.service';
-import { IonicModule, AlertController } from '@ionic/angular';
+
 import { SplashScreenComponent } from '../splash-screen/splash-screen.component';
+import { AlertController, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea } from '@ionic/angular/standalone';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { SplashScreenComponent } from '../splash-screen/splash-screen.component'
   templateUrl: './home-no-connected.component.html',
   styleUrls: ['./home-no-connected.component.scss'],
   standalone: true,
-  imports: [IonicModule, SplashScreenComponent,
+  imports: [ SplashScreenComponent, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner, IonTextarea
   ]
 })
 export class HomeNoConnectedComponent implements OnInit{

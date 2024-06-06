@@ -5,7 +5,7 @@ import { CoinGeckoService } from '../../services/coin-gecko.service';
 import { NewsService } from '../../services/datanews.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner } from '@ionic/angular/standalone';
 import { SplashScreenComponent } from '../splash-screen/splash-screen.component';
 import { MarketCapPipe } from "../../pipe/market-cap.pipe";
 import { Observable, of } from 'rxjs';
@@ -33,7 +33,7 @@ interface NewsResponse {
   standalone: true,
   templateUrl: './home-connected.component.html',
   styleUrls: ['./home-connected.component.scss'],
-  imports: [NavigationMenuComponent, CommonModule, FormsModule, IonicModule, SplashScreenComponent, MarketCapPipe]
+  imports: [NavigationMenuComponent, CommonModule, FormsModule,  SplashScreenComponent, MarketCapPipe, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList, IonAvatar, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonListHeader, IonSpinner],
 })
 export class HomeConnectedComponent implements OnInit {
   marketData$: Observable<any[]> = new Observable<any[]>();

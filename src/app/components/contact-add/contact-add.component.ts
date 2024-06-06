@@ -4,14 +4,15 @@ import { CommonModule } from '@angular/common';
 import { WalletManagementService } from '../../services/wallet-management.service';
 import { ContactService, ContactInterface } from '../../services/contact.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonicModule, AlertController } from '@ionic/angular';
+import { AlertController, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList } from '@ionic/angular/standalone';
 import { firstValueFrom } from 'rxjs';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-contact-add',
   templateUrl: './contact-add.component.html',
   styleUrls: ['./contact-add.component.scss'],
-  imports: [FormsModule, CommonModule, IonicModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList],
   standalone: true,
 })
 export class ContactAddComponent implements OnInit {
@@ -24,11 +25,10 @@ export class ContactAddComponent implements OnInit {
   newContactSolWallet: string = '';
   newContactNote: string = '';
   contacts: ContactInterface[] = [];
-
   constructor(
     private walletService: WalletManagementService,
     private contactService: ContactService,
-    private alertController: AlertController,
+    @Inject(AlertController) private alertController: AlertController,
     private router: Router,
     private route: ActivatedRoute
   ) {

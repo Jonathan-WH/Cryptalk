@@ -1,5 +1,10 @@
 <ion-app>
     <ion-router-outlet></ion-router-outlet>
+    <pwa-install
+    manifest-url="../manifest.webmanifest"
+    install-description="Custom call to install text"
+    description="Progressive web application"
+    ></pwa-install>
    <ion-tabs>
     <app-navigation-menu [class.hidden]="!showNavigationMenu" ></app-navigation-menu>
    </ion-tabs> 

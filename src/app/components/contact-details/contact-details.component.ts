@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ContactInterface, ContactService } from '../../services/contact.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonicModule, AlertController } from '@ionic/angular';
+
+import {AlertController, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList } from '@ionic/angular/standalone';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChatService } from '../../services/chat.service';
@@ -12,7 +13,7 @@ import { ToastController } from '@ionic/angular/standalone';
   selector: 'app-contact-details',
   templateUrl: './contact-details.component.html',
   styleUrls: ['./contact-details.component.scss'],
-  imports: [IonicModule, CommonModule, FormsModule],
+  imports: [ CommonModule, FormsModule, IonHeader, IonToolbar, IonButton, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonItem, IonLabel, IonInput, IonButtons, IonText, IonTitle, IonIcon, IonList],
   standalone: true,
   providers: [TitleCasePipe]
 })
