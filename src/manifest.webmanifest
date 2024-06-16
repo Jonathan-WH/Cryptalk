@@ -72,5 +72,6 @@
       "sizes": "518x922",
       "type": "image/jpeg"
     }
-  ]
+  ],
+  "favicon": "./favicon.ico"
 }
