@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/settings-page"></ion-back-button>
     </ion-buttons>
-    <ion-title>Profil Info</ion-title>
+    <ion-title>Confidentiality</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -43,10 +43,10 @@
         <ion-label class="titre-info" position="stacked">Address of contact:</ion-label>
         <ion-textarea readonly [value]="walletAddress"></ion-textarea>
         <ion-button fill="clear" slot="end" (click)="copyTextToClipboard(walletAddress)">
-          <ion-icon class="copy-button" src="../../../assets/SVG/copy.svg" ></ion-icon>
+          <ion-icon class="copy-button" src="../../../assets/SVG/copy.svg"></ion-icon>
         </ion-button>
       </ion-item>
-      
+
     </ion-card-content>
   </ion-card>
 </ion-content>

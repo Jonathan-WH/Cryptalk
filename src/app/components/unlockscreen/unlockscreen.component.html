@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="background">
+    <img  src="../../../assets/logo/Fichier7.png" alt="">
+  </div>
+  <div *ngIf="(unlockTimer$ | async) === true">
+    <div class="pin-dots">
+    <span *ngFor="let dot of dots; let i = index" [class.filled]="i < pin.length">&#9679;</span>
+  </div>
+  <div class="number-grid">
+    <!-- Lignes 1 à 3 -->
+    <button *ngFor="let number of [1, 2, 3]" ion-button large clear class="number-button" (click)="addNumber(number)">
+      {{ number }}
+    </button>
+    <button *ngFor="let number of [4, 5, 6]" ion-button large clear class="number-button" (click)="addNumber(number)">
+      {{ number }}
+    </button>
+    <button *ngFor="let number of [7, 8, 9]" ion-button large clear class="number-button" (click)="addNumber(number)">
+      {{ number }}
+    </button>
+
+    <!-- Ligne pour le zéro -->
+    <button ion-button large clear class="number-button invisible-button"></button>
+    <button ion-button large clear class="number-button" (click)="addNumber(0)">
+      0
+    </button>
+    <button (click)="deleteLast()" class="delete-button" > <ion-icon src="../../../assets/SVG/delete.svg"></ion-icon></button>
+  </div>
+  </div>
+  
+
+  <div *ngIf="(unlockTimer$ | async) === false ">
+   <h1>Locked for 5 min</h1>
+  </div>
+  
+ 
+  
+</ion-content>
+
+

@@ -44,6 +44,15 @@ export class AppComponent {
 
   ngOnInit() {
     this.notificationService.initPush();
+
+    // Vérification de l'existence du PIN dans localStorage
+    if (localStorage.getItem('appPin')) {
+      // Rediriger vers l'écran de déverrouillage si un PIN est défini
+      this.router.navigateByUrl('/unlock-screen');
+    } else {
+      // Rediriger vers une autre page si aucun PIN n'est défini
+      this.router.navigateByUrl('/home-no-connected'); // Modifiez selon la route appropriée
+    }
     
     setTimeout(() => {
       this.updateNavigationVisibility(this.router.url);
@@ -58,7 +67,9 @@ export class AppComponent {
       'connect-with-existing-account',
       'contact-details',
       'home-new-user',
-      'profil-info'
+      'profil-info',
+      'unlock-screen',
+      'confidentiality'
     ];
     // Check if the current URL should hide the navigation menu
     this.showNavigationMenu = !routesToHideNav.some(route => url.includes(route));

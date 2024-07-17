@@ -7,10 +7,23 @@
   <ion-content>
 
     <ion-list [inset]="true">
-      <ion-item (click)="navigateTo()">
+      <ion-item (click)="navigateToInfo()">
         <ion-label><ion-icon class="circle-user" src="../../../assets/SVG/circle-user.svg"></ion-icon>Profil Info</ion-label>
         <ion-icon slot="end" src="../../../assets/SVG/chevron-right.svg"></ion-icon>
       </ion-item>
+
+      <ion-item (click)="navigateToConfidentiality()" >
+        <ion-label>
+          <ion-icon src="../../../assets/SVG/lock.svg" class="circle-user"></ion-icon>Confidentiality
+          
+        </ion-label>
+        <ion-icon slot="end" src="../../../assets/SVG/chevron-right.svg"></ion-icon>
+      </ion-item>
+      
+    </ion-list>
+
+    <ion-list [inset]="true">
+
       <ion-item >
         <ion-label>
           Darkmode
@@ -18,9 +31,7 @@
         </ion-label>
     <ion-toggle slot="end" aria-label="Dark toggle" color="dark" [checked]="false"></ion-toggle>
       </ion-item>
-    </ion-list>
 
-    <ion-list [inset]="true">
       <ion-item (click)="disconnect()">
         <ion-label color="danger">Disconnect</ion-label>
         <ion-icon color="danger" slot="end" src="../../../assets/SVG/leave.svg"></ion-icon>

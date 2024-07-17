@@ -12,11 +12,17 @@ import { ContactAddComponent } from './components/contact-add/contact-add.compon
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 import { HomeNewUserComponent } from './components/home-new-user/home-new-user.component';
 import { ProfilInfoComponent } from './components/profil-info/profil-info.component';
+import { UnlockScreenComponent } from './components/unlockscreen/unlockscreen.component';
+import { ConfidentialityComponent } from './components/confidentiality/confidentiality.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home-no-connected', pathMatch: 'full' },
 
     { path: 'home-no-connected', component: HomeNoConnectedComponent },
+
+    { path: 'unlock-screen', component: UnlockScreenComponent},
+
+    {path: 'confidentiality', component: ConfidentialityComponent, canActivate: [AuthGuard]},
 
     { path: 'home-connected', component: HomeConnectedComponent, canActivate: [AuthGuard]},
 

@@ -1,0 +1,55 @@
+
+
+.pin-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pin-dots span {
+  font-size: 32px;
+  margin: 0 5px;
+  opacity: 0.3;
+}
+
+.pin-dots span.filled {
+  opacity: 1;
+  color: #00ff00 ;
+}
+
+.number-grid {
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.number-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 20px;
+  text-align: center;
+  line-height: 56px; // Aligns text vertically
+  color: #000;
+  background-color: #fff;
+  margin: auto;
+  color: #00ff00 ;
+  background-color:  #00ff0019 ;
+  border: 1px solid #00ff00 ;
+}
+  
+  .invisible-button {
+    visibility: hidden;
+  }
+
+  .delete-button {
+    color: #00ff00 ;
+    position: relative;
+    top: 5px;
+    background: transparent!important; /* Couleur de fond par défaut */
+  font-size: 20px;
+  }
+  

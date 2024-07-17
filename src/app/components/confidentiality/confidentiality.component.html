@@ -1,0 +1,44 @@
+<ion-header class="greenborderheader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/settings-page"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Confidentiality</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Lock your app with a pin</ion-label>
+    <ion-toggle [(ngModel)]="showDetails" (ionChange)="toggleDetails()" slot="end" aria-label="Dark toggle" color="dark" [checked]="showDetails"></ion-toggle>
+  </ion-item>
+
+  <!-- Bouton 'Change PIN' qui s'affiche uniquement si un PIN est déjà défini -->
+  <ion-item *ngIf="hasPin$ | async">
+    <ion-button (click)="toggleKeypad()">
+      Change PIN
+    </ion-button>
+  </ion-item>
+
+  <!-- Section de saisie du PIN qui s'affiche uniquement lorsque showKeypad est true -->
+  <div *ngIf="showKeypad" class="pin-setup">
+    <p *ngIf="confirmingPin">Please confirm your PIN</p>
+    <p *ngIf="!confirmingPin">Enter your new PIN</p>
+    <div class="pin-dots">
+      <span *ngFor="let dot of dots; let i = index" [class.filled]="i < getCurrentPinLength()">&#9679;</span>
+    </div>
+    <div class="number-grid">
+      <button *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9]" ion-button large clear class="number-button" (click)="addNumber(number)">
+        {{ number }}
+      </button>
+      <button ion-button large clear class="number-button invisible-button"></button>
+      <button ion-button large clear class="number-button" (click)="addNumber(0)">
+        0
+      </button>
+      <button (click)="deleteLast()" class="delete-button" > <ion-icon src="../../../assets/SVG/delete.svg"></ion-icon></button>
+    </div>
+    <ion-button expand="block" *ngIf="confirmingPin" (click)="confirmPin()">Confirm PIN</ion-button>
+    <ion-button expand="block" *ngIf="!confirmingPin" (click)="startConfirmPin()">Set PIN</ion-button>
+    <ion-button expand="block" color="medium" (click)="cancel()">Cancel</ion-button>
+  </div>
+</ion-content>

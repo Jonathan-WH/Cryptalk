@@ -18,7 +18,7 @@ export class SettingsPageComponent {
 
   constructor(private router: Router, private modalController: ModalController) { }
 
-  navigateTo() {
+  navigateToInfo() {
     this.router.navigate(['/profil-info']);
   }
 
@@ -37,6 +37,10 @@ export class SettingsPageComponent {
     });
 
     return await modal.present();
+  }
+
+  navigateToConfidentiality() {
+    this.router.navigate(['/confidentiality']);
   }
 
 

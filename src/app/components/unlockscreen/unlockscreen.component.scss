@@ -1,0 +1,109 @@
+
+
+.pin-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 130px;
+}
+
+.pin-dots span {
+  font-size: 32px;
+  margin: 0 5px;
+  opacity: 0.3;
+}
+
+.pin-dots span.filled {
+  opacity: 1;
+  color: #00ff00 ;
+}
+
+.number-grid {
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
+  justify-content: center;
+  max-width: 320px;
+  margin: auto;
+}
+
+.number-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 20px;
+  text-align: center;
+  line-height: 56px; // Aligns text vertically
+  color: #000;
+  background-color: #fff;
+  margin: auto;
+  color: #00ff00 ;
+  background-color:  #00ff0019 ;
+  border: 1px solid #00ff00 ;
+}
+
+.delete-button {
+  color: #00ff00 ;
+  position: relative;
+  top: 5px;
+  background: transparent!important; /* Couleur de fond par défaut */
+font-size: 20px;
+}
+
+
+.invisible-button {
+  visibility: hidden;
+}
+
+div.background {
+  position: absolute;
+  z-index: -1;
+  opacity: 0.1;
+  top: 140px;
+}
+
+
+
+button.delete-buttonTest{
+  padding: 5px;
+  color: red;
+  border: solid 1px red;
+background-color: black;
+border-radius: 5px;
+position: relative;
+left: 75%;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
+
+.shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.number-button:active {
+  background-color: #00ff44; /* Vert plus clair pour l'effet d'éclairage */
+}
+
+
