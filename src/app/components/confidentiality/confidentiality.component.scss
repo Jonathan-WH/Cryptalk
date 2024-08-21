@@ -24,6 +24,8 @@
   gap: 10px;
   padding: 20px;
   justify-content: center;
+  max-width: 370px;
+  margin: auto;
 }
 
 .number-button {
@@ -51,5 +53,30 @@
     top: 5px;
     background: transparent!important; /* Couleur de fond par défaut */
   font-size: 20px;
+  }
+
+  ion-button {
+    --border-color: rgb(255, 255, 124);
+    --color: rgb(255, 255, 124);
+  }
+
+  ion-button.left {
+margin-left: 15px;
+--color: #00ff00;
+--border-color: #00ff00
+
+
+  }
+
+  ion-button.right {
+margin-right: 15px;
+--color: red;
+
+  }
+
+  div.pin-setup p {
+    text-align: center;
+    font-size: 20px;
+    color: #00ff00;
   }
   

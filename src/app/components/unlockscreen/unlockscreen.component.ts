@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { BehaviorSubject, Observable, of, timer } from 'rxjs';
-import {  map, startWith, switchMap, tap } from 'rxjs/operators';
+import {  map, startWith, switchMap, tap, take } from 'rxjs/operators';
 import { IonButton, IonHeader, IonContent, IonToolbar, IonBackButton, IonButtons, IonItem, IonLabel, IonIcon } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-unlock-screen',
@@ -20,10 +22,12 @@ export class UnlockScreenComponent implements OnInit {
   private lockDuration = 300000; // 3 seconds for easier testing
   private isLocked$ = new BehaviorSubject<boolean>(this.getInitialLockState());
   unlockTimer$: Observable<boolean>;
+  redirectUrl$: Observable<string>;
 
   constructor(
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private route: ActivatedRoute,
   ) {
     // Dans votre composant
     this.unlockTimer$ = this.isLocked$.pipe(
@@ -40,10 +44,19 @@ export class UnlockScreenComponent implements OnInit {
       startWith(this.getInitialLockState())
     );
 
+    this.redirectUrl$ = this.route.queryParams.pipe(
+      map(params => params['redirect'] || '/home-connected')
+    );
+
+    // this.route.queryParams.subscribe(params => {
+    //   if (params['redirect']) {
+    //     this.redirectUrl = params['redirect'];
+    //   }
+    // });
+
   }
 
   ngOnInit() {
-    // The isLocked$ BehaviorSubject is directly used with async pipe in the template
   }
 
   getInitialLockState(): boolean {
@@ -75,24 +88,31 @@ export class UnlockScreenComponent implements OnInit {
     }
   }
 
-  
   checkPin() {
     const storedPin = localStorage.getItem('appPin');
     if (this.pin === storedPin) {
-      this.router.navigateByUrl('/home-connected');
-      this.resetLoginAttempts();
+      this.redirectUrl$.pipe(take(1)).subscribe(url => {
+        this.router.navigateByUrl(url);
+        this.resetLoginAttempts();
+        this.pin = '';
+        this.updateDots();
+      });
     } else {
       this.incrementAttempts();
       this.pin = '';
       this.updateDots();
-      // Add shake class to dots
-      const dotsContainer = document.querySelector('.pin-dots');
-      if (dotsContainer) {
-        dotsContainer.classList.add('shake');
-        setTimeout(() => dotsContainer.classList.remove('shake'), 820); // Remove after animation
-      }
+      this.addShakeAnimation();
     }
   }
+
+  addShakeAnimation() {
+    const dotsContainer = document.querySelector('.pin-dots');
+    if (dotsContainer) {
+      dotsContainer.classList.add('shake');
+      setTimeout(() => dotsContainer.classList.remove('shake'), 820);
+    }
+  }
+
   
 
   incrementAttempts() {

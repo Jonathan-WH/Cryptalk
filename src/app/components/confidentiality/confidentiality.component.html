@@ -1,7 +1,7 @@
 <ion-header class="greenborderheader">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/settings-page"></ion-back-button>
+      <ion-back-button (click)="cancel()" defaultHref="/settings-page"></ion-back-button>
     </ion-buttons>
     <ion-title>Confidentiality</ion-title>
   </ion-toolbar>
@@ -10,12 +10,12 @@
 <ion-content>
   <ion-item>
     <ion-label>Lock your app with a pin</ion-label>
-    <ion-toggle [(ngModel)]="showDetails" (ionChange)="toggleDetails()" slot="end" aria-label="Dark toggle" color="dark" [checked]="showDetails"></ion-toggle>
+    <ion-toggle [(ngModel)]="showDetails" (ionChange)="toggleDetails()" slot="end"aria-label="Success toggle" color="success" [checked]="showDetails"></ion-toggle>
   </ion-item>
 
   <!-- Bouton 'Change PIN' qui s'affiche uniquement si un PIN est déjà défini -->
   <ion-item *ngIf="hasPin$ | async">
-    <ion-button (click)="toggleKeypad()">
+    <ion-button fill="outline" (click)="toggleKeypad()">
       Change PIN
     </ion-button>
   </ion-item>
@@ -37,8 +37,18 @@
       </button>
       <button (click)="deleteLast()" class="delete-button" > <ion-icon src="../../../assets/SVG/delete.svg"></ion-icon></button>
     </div>
-    <ion-button expand="block" *ngIf="confirmingPin" (click)="confirmPin()">Confirm PIN</ion-button>
-    <ion-button expand="block" *ngIf="!confirmingPin" (click)="startConfirmPin()">Set PIN</ion-button>
-    <ion-button expand="block" color="medium" (click)="cancel()">Cancel</ion-button>
+    <ion-toolbar>
+      <ion-buttons slot="secondary">
+        
+        <ion-button size="default" fill="outline" *ngIf="confirmingPin" (click)="confirmPin()" class="left">Confirm PIN</ion-button>
+      <ion-button size="default"  fill="outline"  *ngIf="!confirmingPin" (click)="startConfirmPin()" class="left">Set PIN</ion-button>
+      </ion-buttons>
+      <ion-buttons slot="primary">
+        <ion-button class="right" size="small"  fill="outline" (click)="cancel()">Cancel</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+   
   </div>
+ 
+  
 </ion-content>

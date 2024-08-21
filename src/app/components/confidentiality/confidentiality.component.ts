@@ -36,7 +36,7 @@ export class ConfidentialityComponent implements OnInit {
     // Vérifie l'état du PIN dans localStorage et ajuste les états initiaux
     const storedPin = this.pinService.getPin();
     this.showDetails = !!storedPin;
-    this.showKeypad = !this.showDetails; // Affiche le clavier si le toggle est désactivé
+
   }
 
   async presentToast(message: string, color: string = 'dark') {
